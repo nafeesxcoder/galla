@@ -1,0 +1,7 @@
+bahi/node_modules/
+bahi/.next/
+bahi/dist/
+bahi/build/
+bahi/.env
+bahi/.env.local
+*.log
