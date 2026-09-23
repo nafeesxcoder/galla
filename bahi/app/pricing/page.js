@@ -1,14 +1,20 @@
+﻿import { pageMeta } from "@/lib/seo";
 import PricingPlans from "./PricingPlans";
 
-export const metadata = { title: "Pricing" };
+export const metadata = pageMeta({
+  title: "Pricing",
+  description:
+    "Simple pricing with a free plan. Compare Basic, Silver and Gold plans for GST billing, inventory and reports.",
+  path: "/pricing",
+});
 
 const rows = [
-  ["GST invoices", "✓", "✓", "✓"],
+  ["GST invoices", "âœ“", "âœ“", "âœ“"],
   ["Devices", "1", "3", "Unlimited"],
-  ["GST reports", "—", "✓", "✓"],
-  ["E-way bill", "—", "✓", "✓"],
-  ["Multiple godowns", "—", "—", "✓"],
-  ["Staff login", "—", "—", "✓"],
+  ["GST reports", "â€”", "âœ“", "âœ“"],
+  ["E-way bill", "â€”", "âœ“", "âœ“"],
+  ["Multiple godowns", "â€”", "â€”", "âœ“"],
+  ["Staff login", "â€”", "â€”", "âœ“"],
 ];
 
 const faqs = [
@@ -50,3 +56,4 @@ export default function Pricing() {
     </>
   );
 }
+

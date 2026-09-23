@@ -1,6 +1,12 @@
+﻿import { pageMeta } from "@/lib/seo";
 import CtaBand from "@/components/CtaBand";
 
-export const metadata = { title: "Solutions" };
+export const metadata = pageMeta({
+  title: "Solutions",
+  description:
+    "Billing, inventory, accounting, GST compliance, payments and an online store, all in one app for small businesses.",
+  path: "/solutions",
+});
 
 const solutions = [
   { t: "Billing and invoicing", d: "GST and non-GST invoices, estimates, quotations, delivery challans and credit notes.", pts: ["Custom invoice themes", "Thermal printer support", "Billing by barcode scan"] },
@@ -35,3 +41,4 @@ export default function Solutions() {
     </>
   );
 }
+

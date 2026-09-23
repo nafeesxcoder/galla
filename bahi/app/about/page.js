@@ -1,7 +1,13 @@
+﻿import { pageMeta } from "@/lib/seo";
 import CtaBand from "@/components/CtaBand";
 import { SITE } from "@/lib/site";
 
-export const metadata = { title: "About us" };
+export const metadata = pageMeta({
+  title: "About us",
+  description:
+    "Why we build simple GST billing software for Indian small businesses, and how the product has grown.",
+  path: "/about",
+});
 
 const timeline = [
   ["2019", "Started with one grocery store's billing problem."],
@@ -47,3 +53,4 @@ export default function About() {
     </>
   );
 }
+

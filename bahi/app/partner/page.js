@@ -1,6 +1,12 @@
+﻿import { pageMeta } from "@/lib/seo";
 import PartnerForm from "./PartnerForm";
 
-export const metadata = { title: "Partner with us" };
+export const metadata = pageMeta({
+  title: "Partner with us",
+  description:
+    "Earn recurring commission as a reseller, CA or referral partner. Free demo account and training included.",
+  path: "/partner",
+});
 
 export default function Partner() {
   return (
@@ -33,3 +39,4 @@ export default function Partner() {
     </>
   );
 }
+

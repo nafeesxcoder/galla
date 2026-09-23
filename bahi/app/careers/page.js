@@ -1,4 +1,10 @@
-export const metadata = { title: "Careers" };
+﻿import { pageMeta } from "@/lib/seo";
+export const metadata = pageMeta({
+  title: "Careers",
+  description:
+    "Open roles in engineering, support, sales and design. Join a team building tools for small businesses.",
+  path: "/careers",
+});
 
 const jobs = [
   { role: "Frontend Developer (Next.js)", team: "Engineering", place: "Remote" },
@@ -41,3 +47,4 @@ export default function Careers() {
     </>
   );
 }
+

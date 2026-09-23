@@ -25,28 +25,83 @@ export default function Navbar() {
   return (
     <header className="nav">
       <nav className="wrap nav__inner" aria-label="Main">
-        <Link href="/" aria-label={`${SITE.name} home`} onClick={close}><Logo /></Link>
+        <Link href="/" aria-label={`${SITE.name} home`} onClick={close}>
+          <Logo />
+        </Link>
 
         <ul id="nav-links" className={`nav__links ${open ? "open" : ""}`}>
+          {/* Home link sirf tab dikhta hai jab user home page par nahi hai */}
+          {path !== "/" && (
+            <li>
+              <Link href="/" className="nav__home" onClick={close}>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
+                  <path d="M3 10.5 12 3l9 7.5" />
+                  <path d="M5 9.5V21h14V9.5" />
+                </svg>
+                {t("nav.home")}
+              </Link>
+            </li>
+          )}
+
           <li>
-            <Link href="/mobile-app" className="nav__mobile" aria-current={cur("/mobile-app")} onClick={close}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <rect x="6" y="2" width="12" height="20" rx="2" /><path d="M11 18h2" />
+            <Link
+              href="/mobile-app"
+              className="nav__mobile"
+              aria-current={cur("/mobile-app")}
+              onClick={close}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <rect x="6" y="2" width="12" height="20" rx="2" />
+                <path d="M11 18h2" />
               </svg>
               {t("nav.tryMobile")}
             </Link>
           </li>
+
           {NAV.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} aria-current={cur(item.href)} onClick={close}>{t(item.key)}</Link>
+              <Link
+                href={item.href}
+                aria-current={cur(item.href)}
+                onClick={close}
+              >
+                {t(item.key)}
+              </Link>
             </li>
           ))}
-          <li><Link href="/login" aria-current={cur("/login")} onClick={close}>{t("nav.login")}</Link></li>
+
+          <li>
+            <Link href="/login" aria-current={cur("/login")} onClick={close}>
+              {t("nav.login")}
+            </Link>
+          </li>
         </ul>
 
         <div className="nav__right">
           <LangSwitcher />
-          <button className="nav__toggle" aria-label="Menu" aria-expanded={open} aria-controls="nav-links" onClick={() => setOpen(!open)}>
+          <button
+            className="nav__toggle"
+            aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="nav-links"
+            onClick={() => setOpen(!open)}
+          >
             {open ? "✕" : "☰"}
           </button>
         </div>

@@ -1,7 +1,13 @@
+﻿import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import InvoiceMock from "@/components/InvoiceMock";
 
-export const metadata = { title: "Desktop app" };
+export const metadata = pageMeta({
+  title: "Desktop app",
+  description:
+    "Fast billing on Windows with keyboard shortcuts, barcode scanners and thermal printers. Works offline.",
+  path: "/desktop",
+});
 
 export default function Desktop() {
   return (
@@ -42,3 +48,4 @@ export default function Desktop() {
     </>
   );
 }
+

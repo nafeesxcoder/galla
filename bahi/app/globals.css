@@ -1,3 +1,4 @@
+@import "../components/home/home.css";
 :root {
   --ink: #16202e;
   --ink-soft: #4a5566;
@@ -293,3 +294,19 @@ p { max-width: 62ch; }
 .phone-stage .phone__screen { font-size: .95rem; border-radius: 24px; }
 .phone-stage .phone__body b { font-size: 1.05rem; }
 .phone-stage .phone__body small { font-size: .8rem; }
+/* Home link (sirf andar ke pages par dikhta hai) */
+.nav__home {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-weight: 600 !important;
+  color: var(--ledger) !important;
+}
+
+.nav__home:hover {
+  color: var(--ledger-dark) !important;
+}
+
+/* Home link (sirf andar ke pages par dikhta hai) */
+.nav__home { display: inline-flex; align-items: center; gap: .35rem; font-weight: 600 !important; color: var(--ledger) !important; }
+.nav__home:hover { color: var(--ledger-dark) !important; }
