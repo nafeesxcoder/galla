@@ -1,5 +1,5 @@
-// Live domain yahan daalo (bina trailing slash)
-export const SITE_URL = "https://galla-seven.vercel.app/";
+﻿// Live domain yahan daalo (bina trailing slash)
+export const SITE_URL = "https://galla-seven.vercel.app";
 
 export const DEFAULT_DESC =
   "Create GST and non-GST invoices, manage stock, track payments and get GST-ready reports. Free billing software for small businesses in India.";
@@ -31,3 +31,4 @@ export function pageMeta({
     },
   };
 }
+
