@@ -1,8 +1,8 @@
 const items = [
-  { t: "GST-ready billing", d: "Built to current GST rules" },
-  { t: "SSL encrypted data", d: "Backups you control" },
-  { t: "Checked by CAs", d: "Reports your CA accepts" },
-  { t: "Used across retail & trade", d: "Shops, wholesale, manufacturing" },
+  { t: "GST-ready invoices", d: "HSN codes and tax splits built in" },
+  { t: "Works offline", d: "Bills sync when you reconnect" },
+  { t: "Your data stays yours", d: "Export to Excel or PDF any time" },
+  { t: "Free to start", d: "No card, no trial expiry" },
 ];
 
 export default function TrustBar() {

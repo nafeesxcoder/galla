@@ -7,9 +7,9 @@ import { useLang } from "./LangProvider";
 
 // Apne asli registration numbers daalo ya in lines ko hata do
 const LEGAL = {
-  gstin: "09ABCDE1234F1Z5",
-  udyam: "UDYAM-UP-00-0000000",
-  company: `${SITE.name} Technologies Pvt. Ltd.`,
+  gstin: "",
+  udyam: "",
+  company: `${SITE.name} Technologies`,
 };
 
 export default function Footer() {
@@ -101,14 +101,15 @@ export default function Footer() {
               {SITE.city}
             </p>
           </div>
-          <div>
-            <h4>Registration</h4>
-            <p>
-              GSTIN: {LEGAL.gstin}
-              <br />
-              Udyam: {LEGAL.udyam}
-            </p>
-          </div>
+          {(LEGAL.gstin || LEGAL.udyam) && (
+            <div>
+              <h4>Registration</h4>
+              <p>
+                {LEGAL.gstin && <>GSTIN: {LEGAL.gstin}<br /></>}
+                {LEGAL.udyam && <>Udyam: {LEGAL.udyam}</>}
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="footer__bottom">

@@ -7,7 +7,6 @@ import TrustBar from "@/components/home/TrustBar";
 import Coverage from "@/components/home/Coverage";
 import DayJourney from "@/components/home/DayJourney";
 import MultiDevice from "@/components/home/MultiDevice";
-import Testimonials from "@/components/home/Testimonials";
 import FeatureGrid from "@/components/home/FeatureGrid";
 import GrowthSection from "@/components/home/GrowthSection";
 import IndustryMarquee from "@/components/home/IndustryMarquee";
@@ -31,9 +30,9 @@ const industries = [
 
 // Sample ratings: apne real numbers se badlo
 const ratings = [
-  { score: "4.7", src: "Google Play" },
-  { score: "4.6", src: "App Store" },
-  { score: "4.8", src: "Customer reviews" },
+  { score: "Free", src: "plan, no expiry" },
+  { score: "9", src: "Indian languages" },
+  { score: "3", src: "Android, iPhone, Windows" },
 ];
 
 export default function Home() {
@@ -64,9 +63,6 @@ export default function Home() {
                 <div className="badge" key={r.src}>
                   <b>{r.score}</b>
                   <div>
-                    <span className="stars" aria-hidden="true">
-                      ★★★★★
-                    </span>
                     <small>{r.src}</small>
                   </div>
                 </div>
@@ -81,19 +77,19 @@ export default function Home() {
 
       <div className="wrap stats">
         <div>
-          <b>2 lakh+</b>
+          <b>Free</b>
           <span>{t("stats.businesses")}</span>
         </div>
         <div>
-          <b>18</b>
+          <b>9</b>
           <span>{t("stats.states")}</span>
         </div>
         <div>
-          <b>4.7</b>
+          <b>3</b>
           <span>{t("stats.rating")}</span>
         </div>
         <div>
-          <b>24×7</b>
+          <b>GST</b>
           <span>{t("stats.support")}</span>
         </div>
       </div>
@@ -139,7 +135,7 @@ export default function Home() {
           <div className="panel">
             <h3>{t("ind.quoteTitle")}</h3>
             <p style={{ marginTop: "1rem", fontSize: "1.15rem" }}>
-              &quot;{t("ind.quote")}&quot;
+              {t("ind.quote")}
             </p>
             <p style={{ marginTop: "1rem", color: "var(--ink-soft)" }}>
               {t("ind.quoteBy")}
@@ -149,8 +145,6 @@ export default function Home() {
       </section>
 
       <IndustryMarquee />
-
-      <Testimonials />
 
       <IndustryGrid />
 

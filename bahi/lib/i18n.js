@@ -27,6 +27,11 @@ export const DICT = {
     "nav.partner": "Partner with us",
     "nav.login": "Login",
     "nav.language": "Choose language",
+    "modal.title": "Scan with your phone camera",
+    "modal.text":
+      "Point your camera at the code to install the app. Bills and stock stay in sync with this computer.",
+    "modal.btn": "Get the app",
+    "modal.or": "or",
 
     "hero.pill": "Built for small businesses",
     "hero.title": "GST and non-GST bills in 30 seconds",
@@ -35,10 +40,10 @@ export const DICT = {
     "hero.cta": "Download free",
     "hero.cta2": "See pricing",
 
-    "stats.businesses": "businesses",
-    "stats.states": "states",
-    "stats.rating": "average rating",
-    "stats.support": "support",
+    "stats.businesses": "to start on the free plan",
+    "stats.states": "Indian languages",
+    "stats.rating": "platforms supported",
+    "stats.support": "and non-GST invoices",
 
     "feat.title": "Everything your shop needs",
     "feat.lead":
@@ -76,10 +81,10 @@ export const DICT = {
     "ind.title": "Made for every kind of business",
     "ind.lead":
       "Retail or wholesale, services or manufacturing, the invoice format fits your work.",
-    "ind.quoteTitle": "What customers say",
+    "ind.quoteTitle": "Not sure which one fits you?",
     "ind.quote":
-      "Working out GST at month end used to take me two days. Now I send the report straight to my CA.",
-    "ind.quoteBy": "Rakesh Gupta, Gupta Hardware, Bareilly",
+      "Every business bills a little differently. Open your business type below and see how invoices, stock and reports are set up for that work.",
+    "ind.quoteBy": "Pick your business type below.",
 
     "cta.title": "Start keeping clean accounts today",
     "cta.text": "7-day free trial. No card needed.",
@@ -124,16 +129,21 @@ export const DICT = {
     "nav.partner": "पार्टनर बनें",
     "nav.login": "लॉगिन",
     "nav.language": "भाषा चुनें",
+    "modal.title": "फ़ोन के कैमरे से स्कैन करें",
+    "modal.text":
+      "कोड पर कैमरा दिखाइए और ऐप इंस्टॉल करें। बिल और स्टॉक इस कंप्यूटर से सिंक रहते हैं।",
+    "modal.btn": "ऐप पाएं",
+    "modal.or": "या",
     "hero.pill": "छोटे व्यवसायों के लिए बना",
     "hero.title": "GST और नॉन-GST बिल, 30 सेकंड में",
     "hero.lead":
       "बिलिंग, स्टॉक, उधार और GST रिपोर्ट, सब एक ऐप में। मोबाइल और कंप्यूटर दोनों पर चलता है।",
     "hero.cta": "मुफ़्त डाउनलोड करें",
     "hero.cta2": "कीमतें देखें",
-    "stats.businesses": "व्यवसाय",
-    "stats.states": "राज्य",
-    "stats.rating": "औसत रेटिंग",
-    "stats.support": "सहायता",
+    "stats.businesses": "फ्री प्लान पर शुरुआत",
+    "stats.states": "भारतीय भाषाएँ",
+    "stats.rating": "प्लेटफ़ॉर्म सपोर्ट",
+    "stats.support": "और नॉन-GST इनवॉइस",
     "feat.title": "दुकान चलाने के लिए जो चाहिए",
     "feat.lead":
       "रजिस्टर, कैलकुलेटर और अलग-अलग Excel शीट की जगह एक ही जगह पूरा हिसाब।",
@@ -166,10 +176,10 @@ export const DICT = {
     "ind.title": "हर तरह के बिज़नेस के लिए",
     "ind.lead":
       "रिटेल हो या होलसेल, सर्विस हो या मैन्युफैक्चरिंग, इनवॉइस फ़ॉर्मेट आपके काम के हिसाब से।",
-    "ind.quoteTitle": "ग्राहक क्या कहते हैं",
+    "ind.quoteTitle": "पता नहीं कौन सा आपके लिए है?",
     "ind.quote":
-      "महीने के आख़िर में GST का हिसाब लगाने में दो दिन लगते थे। अब रिपोर्ट सीधे CA को भेज देता हूँ।",
-    "ind.quoteBy": "राकेश गुप्ता, गुप्ता हार्डवेयर, बरेली",
+      "हर बिज़नेस का बिल अलग बनता है। अपना बिज़नेस टाइप खोलिए और देखिए कि इनवॉइस, स्टॉक और रिपोर्ट आपके काम के हिसाब से कैसे सेट हैं।",
+    "ind.quoteBy": "नीचे अपना बिज़नेस टाइप चुनिए।",
     "cta.title": "आज से पक्का हिसाब शुरू करें",
     "cta.text": "7 दिन का मुफ़्त ट्रायल। कार्ड की ज़रूरत नहीं।",
     "cta.btn": "मुफ़्त ट्रायल शुरू करें",

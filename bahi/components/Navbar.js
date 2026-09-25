@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { NAV, SITE } from "@/lib/site";
 import { useLang } from "./LangProvider";
 import LangSwitcher from "./LangSwitcher";
+import AppModal from "./AppModal";
 
 export function Logo() {
   return (
@@ -17,6 +18,9 @@ export function Logo() {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [appOpen, setAppOpen] = useState(false);
+  const [anchor, setAnchor] = useState(null);
+  const appBtn = useRef(null);
   const path = usePathname();
   const { t } = useLang();
   const close = () => setOpen(false);
@@ -34,15 +38,7 @@ export default function Navbar() {
           {path !== "/" && (
             <li>
               <Link href="/" className="nav__home" onClick={close}>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  aria-hidden="true"
-                >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path d="M3 10.5 12 3l9 7.5" />
                   <path d="M5 9.5V21h14V9.5" />
                 </svg>
@@ -52,35 +48,30 @@ export default function Navbar() {
           )}
 
           <li>
-            <Link
-              href="/mobile-app"
+            <button
+              ref={appBtn}
+              type="button"
               className="nav__mobile"
-              aria-current={cur("/mobile-app")}
-              onClick={close}
+              aria-haspopup="dialog"
+              aria-expanded={appOpen}
+              onClick={() => {
+                const r = appBtn.current?.getBoundingClientRect();
+                if (r) setAnchor({ top: r.bottom, left: r.left });
+                close();
+                setAppOpen((v) => !v);
+              }}
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <rect x="6" y="2" width="12" height="20" rx="2" />
                 <path d="M11 18h2" />
               </svg>
               {t("nav.tryMobile")}
-            </Link>
+            </button>
           </li>
 
           {NAV.map((item) => (
             <li key={item.href}>
-              <Link
-                href={item.href}
-                aria-current={cur(item.href)}
-                onClick={close}
-              >
+              <Link href={item.href} aria-current={cur(item.href)} onClick={close}>
                 {t(item.key)}
               </Link>
             </li>
@@ -106,6 +97,8 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
+
+      <AppModal open={appOpen} anchor={anchor} onClose={() => setAppOpen(false)} />
     </header>
   );
 }
