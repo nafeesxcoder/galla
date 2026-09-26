@@ -6,7 +6,6 @@ import { NAV, SITE } from "@/lib/site";
 import { useLang } from "./LangProvider";
 import LangSwitcher from "./LangSwitcher";
 import AppModal from "./AppModal";
-import MegaMenu from "./MegaMenu";
 
 export function Logo() {
   return (
@@ -21,15 +20,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [appOpen, setAppOpen] = useState(false);
   const [anchor, setAnchor] = useState(null);
-  const [mega, setMega] = useState(false);
-  const [megaTop, setMegaTop] = useState(72);
   const appBtn = useRef(null);
   const path = usePathname();
   const { t } = useLang();
-  const close = () => {
-    setOpen(false);
-    setMega(false);
-  };
+  const close = () => setOpen(false);
   const cur = (href) => (path === href ? "page" : undefined);
 
   return (
@@ -63,8 +57,7 @@ export default function Navbar() {
               onClick={() => {
                 const r = appBtn.current?.getBoundingClientRect();
                 if (r) setAnchor({ top: r.bottom, left: r.left });
-                setMega(false);
-                setOpen(false);
+                close();
                 setAppOpen((v) => !v);
               }}
             >
@@ -76,25 +69,7 @@ export default function Navbar() {
             </button>
           </li>
 
-          <li>
-            <button
-              type="button"
-              className="nav__solutions"
-              aria-haspopup="true"
-              aria-expanded={mega}
-              onClick={() => {
-                const h = document.querySelector(".nav")?.getBoundingClientRect().bottom ?? 72;
-                setMegaTop(h);
-                setAppOpen(false);
-                setMega((v) => !v);
-              }}
-            >
-              {t("nav.solutions")}
-              <span className={`nav__caret ${mega ? "up" : ""}`} aria-hidden="true" />
-            </button>
-          </li>
-
-          {NAV.filter((item) => item.href !== "/solutions").map((item) => (
+          {NAV.map((item) => (
             <li key={item.href}>
               <Link href={item.href} aria-current={cur(item.href)} onClick={close}>
                 {t(item.key)}
@@ -124,7 +99,6 @@ export default function Navbar() {
       </nav>
 
       <AppModal open={appOpen} anchor={anchor} onClose={() => setAppOpen(false)} />
-      <MegaMenu open={mega} top={megaTop} onClose={() => setMega(false)} />
     </header>
   );
 }

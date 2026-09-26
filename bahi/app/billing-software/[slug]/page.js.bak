@@ -1,22 +1,26 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { INDUSTRIES, getIndustry } from "@/lib/industries";
+import { getContent } from "@/lib/industry-content";
 import { pageMeta } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import InvoiceMock from "@/components/InvoiceMock";
 import CtaBand from "@/components/CtaBand";
 import IndustryIcon from "@/components/industry/IndustryIcon";
-import SimpleFaq from "@/components/industry/SimpleFaq";
 
-import PharmacyPage, { pharmacyMeta, pharmacyFaqs } from "@/components/pharmacy/Page";
+import IndustryHero from "@/components/industry/IndustryHero";
+import IndustryIntro from "@/components/industry/IndustryIntro";
+import IndustryWhoFor from "@/components/industry/IndustryWhoFor";
+import IndustryFeatures from "@/components/industry/IndustryFeatures";
+import IndustrySteps from "@/components/industry/IndustrySteps";
+import IndustryCompare from "@/components/industry/IndustryCompare";
+import IndustryExtras from "@/components/industry/IndustryExtras";
+import IndustryTrust from "@/components/industry/IndustryTrust";
+import IndustryRelated from "@/components/industry/IndustryRelated";
+import IndustryFaq from "@/components/industry/IndustryFaq";
 
-// Jis industry ka apna design ban chuka hai, use yahan add karo.
-// Naya page banao to: components/<slug>/Page.js  ->  yahan entry
-const CUSTOM = {
-  pharmacy: { Page: PharmacyPage, meta: pharmacyMeta, faqs: pharmacyFaqs },
-};
-
+// 12 pages build time par hi ban jate hain
 export function generateStaticParams() {
   return INDUSTRIES.map((i) => ({ slug: i.slug }));
 }
@@ -25,12 +29,10 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const ind = getIndustry(slug);
   if (!ind) return {};
-  const custom = CUSTOM[slug];
+  const c = getContent(slug);
   return pageMeta({
-    title: `${custom?.meta?.title ?? ind.h1} | ${SITE.name}`,
-    description:
-      custom?.meta?.description ??
-      `${ind.intro} Free GST billing software for ${ind.name.toLowerCase()} businesses in India.`,
+    title: `${c?.hero?.h1 ?? ind.h1} | ${SITE.name}`,
+    description: c?.hero?.lead ?? `${ind.intro} Free GST billing software for ${ind.name.toLowerCase()} businesses in India.`,
     path: `/billing-software/${ind.slug}`,
   });
 }
@@ -40,8 +42,8 @@ export default async function IndustryPage({ params }) {
   const ind = getIndustry(slug);
   if (!ind) notFound();
 
-  const custom = CUSTOM[slug];
-  const faqList = custom?.faqs ?? ind.faqs;
+  const c = getContent(slug);
+  const faqList = c?.faqs ?? ind.faqs;
   const others = INDUSTRIES.filter((i) => i.slug !== ind.slug).slice(0, 6);
 
   const schema = {
@@ -81,18 +83,29 @@ export default async function IndustryPage({ params }) {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
   );
 
-  // ---- Jis page ka apna design hai ----
-  if (custom) {
-    const Custom = custom.Page;
+  // ---- Detailed page (content file me entry hai) ----
+  if (c) {
     return (
       <>
-        <Custom ind={ind} crumbs={crumbs} otherTypes={otherTypes} />
+        {crumbs}
+        <IndustryHero hero={c.hero} />
+        <IndustryIntro intro={c.intro} />
+        <IndustryWhoFor whoFor={c.whoFor} />
+        <IndustryFeatures features={c.features} />
+        <IndustrySteps steps={c.steps} />
+        <IndustryCompare compare={c.compare} />
+        <IndustryExtras extras={c.extras} />
+        <IndustryTrust trust={c.trust} />
+        <IndustryRelated related={c.related} />
+        <IndustryFaq faqs={c.faqs} title={`Questions about ${ind.name.toLowerCase()} billing`} />
+        {otherTypes}
+        <CtaBand />
         {ldJson}
       </>
     );
   }
 
-  // ---- Baki pages (simple) ----
+  // ---- Simple page (abhi content nahi hai) ----
   return (
     <>
       {crumbs}
@@ -151,7 +164,7 @@ export default async function IndustryPage({ params }) {
         </div>
       </section>
 
-      <SimpleFaq faqs={ind.faqs} title={`Questions from ${ind.name.toLowerCase()} owners`} />
+      <IndustryFaq faqs={ind.faqs} title={`Questions from ${ind.name.toLowerCase()} owners`} />
 
       {otherTypes}
       <CtaBand />

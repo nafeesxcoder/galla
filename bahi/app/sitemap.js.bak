@@ -1,6 +1,5 @@
 import { SITE_URL } from "@/lib/seo";
 import { INDUSTRIES } from "@/lib/industries";
-import { SOFTWARE } from "@/lib/software";
 
 // /sitemap.xml apne aap ban jata hai
 export default function sitemap() {
@@ -30,12 +29,5 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  const softwarePages = SOFTWARE.map((s) => ({
-    url: `${SITE_URL}/software/${s.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
-  return [...pages, ...industryPages, ...softwarePages];
+  return [...pages, ...industryPages];
 }
