@@ -1,0 +1,36 @@
+// ===========================================================================
+// SECTION 7  -  "Every Part of Billing, Handled on Your Computer"
+// 6 cards: Offline Billing, Estimates, E-invoice, Multi-User, Bill Scan, Loyalty
+// IMAGE: none (icons only)
+// ===========================================================================
+
+import Reveal from "@/components/Reveal";
+import MenuIcon from "@/components/MenuIcon";
+
+export default function EasyManagementOfAllBillingProcesses({ manage }) {
+  return (
+    <section className="section section--wash">
+      <div className="wrap">
+        <Reveal className="center">
+          <span className="eyebrow">{manage.eyebrow}</span>
+          <h2>{manage.h2}</h2>
+          <p className="lead">{manage.lead}</p>
+        </Reveal>
+
+        <div className="fgrid">
+          {manage.items.map(([t, d, icon], i) => (
+            <Reveal key={t} delay={(i % 3) * 80}>
+              <article className="fcard">
+                <span className="fcard__icon">
+                  <MenuIcon name={icon} />
+                </span>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

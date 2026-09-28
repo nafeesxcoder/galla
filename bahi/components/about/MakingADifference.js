@@ -1,0 +1,32 @@
+// ===========================================================================
+// SECTION 10  -  "How Galla Is Changing Daily Billing"
+// 3 large numbers on a tinted band
+// IMAGE: none
+// ===========================================================================
+
+import Reveal from "@/components/Reveal";
+
+export default function MakingADifference({ difference }) {
+  return (
+    <section className="section ab-diff">
+      <div className="wrap">
+        <Reveal className="center">
+          <span className="eyebrow">{difference.eyebrow}</span>
+          <h2>{difference.h2}</h2>
+          <p className="lead">{difference.lead}</p>
+        </Reveal>
+
+        <div className="ab-stats">
+          {difference.stats.map(([n, l], i) => (
+            <Reveal key={l} delay={i * 90}>
+              <div className="ab-stat">
+                <strong>{n}</strong>
+                <span>{l}</span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

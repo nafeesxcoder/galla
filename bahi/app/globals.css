@@ -1,4 +1,12 @@
 @import "../components/home/home.css";
+@import "../components/about/about.css";
+@import "../components/desktop/desktop.css";
+@import "../components/partner/partner.css";
+@import "../components/pricing/pricing.css";
+@import "../components/login/login.css";
+@import "../components/contact/contact.css";
+@import "../components/careers/careers.css";
+@import "../components/legal/legal.css";
 :root {
   --ink: #16202e;
   --ink-soft: #4a5566;

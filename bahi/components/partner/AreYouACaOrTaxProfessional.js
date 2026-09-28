@@ -1,0 +1,48 @@
+// ===========================================================================
+// SECTION 3  -  "Are you a CA or tax professional? This is for you."
+// Four tick points, artwork and a CTA
+// IMAGE: content.js -> ca.img
+// ===========================================================================
+
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import Shot from "./Shot";
+
+export default function AreYouACaOrTaxProfessional({ ca }) {
+  return (
+    <section className="section section--wash">
+      <div className="wrap artsplit">
+        <Reveal>
+          <span className="eyebrow">{ca.eyebrow}</span>
+          <h2>{ca.h2}</h2>
+          <p className="lead">{ca.lead}</p>
+
+          <ul className="pt-points">
+            {ca.points.map(([t, d], i) => (
+              <li key={t} style={{ animationDelay: `${i * 90}ms` }}>
+                <span className="pt-points__tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <div>
+                  <strong>{t}</strong>
+                  <p>{d}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <Link href={ca.cta[1]} className="btn btn--primary">
+            {ca.cta[0]} <span aria-hidden="true">&rarr;</span>
+          </Link>
+          <p className="pt-foot">{ca.foot}</p>
+        </Reveal>
+
+        <Reveal className="artsplit__art" delay={140}>
+          <Shot src={ca.img} art={ca.art} label={ca.imgLabel} alt={ca.h2} />
+        </Reveal>
+      </div>
+    </section>
+  );
+}

@@ -117,9 +117,9 @@ export default function Footer() {
             © {new Date().getFullYear()} {LEGAL.company}. {t("footer.rights")}
           </span>
           <span className="footer__legal">
-            <Link href="/about">Terms</Link>
-            <Link href="/about">Privacy policy</Link>
-            <Link href="/about">Refund policy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/privacy">Privacy policy</Link>
+            <Link href="/refund">Refund policy</Link>
           </span>
           <span className="footer__made">Made in India · Secure SSL</span>
         </div>

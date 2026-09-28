@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NAV, SITE } from "@/lib/site";
 import { useLang } from "./LangProvider";
 import LangSwitcher from "./LangSwitcher";
@@ -26,10 +26,21 @@ export default function Navbar() {
   const appBtn = useRef(null);
   const path = usePathname();
   const { t } = useLang();
+
   const close = () => {
     setOpen(false);
     setMega(false);
+    setAppOpen(false);
   };
+
+  // Page badalte hi sab band. Mega menu ke links, browser ka back button,
+  // kahin se bhi navigate ho - menu khula nahi rehta.
+  useEffect(() => {
+    setOpen(false);
+    setMega(false);
+    setAppOpen(false);
+  }, [path]);
+
   const cur = (href) => (path === href ? "page" : undefined);
 
   return (
@@ -44,7 +55,15 @@ export default function Navbar() {
           {path !== "/" && (
             <li>
               <Link href="/" className="nav__home" onClick={close}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
                   <path d="M3 10.5 12 3l9 7.5" />
                   <path d="M5 9.5V21h14V9.5" />
                 </svg>
@@ -68,7 +87,15 @@ export default function Navbar() {
                 setAppOpen((v) => !v);
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
                 <rect x="6" y="2" width="12" height="20" rx="2" />
                 <path d="M11 18h2" />
               </svg>
@@ -83,20 +110,30 @@ export default function Navbar() {
               aria-haspopup="true"
               aria-expanded={mega}
               onClick={() => {
-                const h = document.querySelector(".nav")?.getBoundingClientRect().bottom ?? 72;
+                const h =
+                  document.querySelector(".nav")?.getBoundingClientRect()
+                    .bottom ?? 72;
                 setMegaTop(h);
                 setAppOpen(false);
+                setOpen(false);
                 setMega((v) => !v);
               }}
             >
               {t("nav.solutions")}
-              <span className={`nav__caret ${mega ? "up" : ""}`} aria-hidden="true" />
+              <span
+                className={`nav__caret ${mega ? "up" : ""}`}
+                aria-hidden="true"
+              />
             </button>
           </li>
 
           {NAV.filter((item) => item.href !== "/solutions").map((item) => (
             <li key={item.href}>
-              <Link href={item.href} aria-current={cur(item.href)} onClick={close}>
+              <Link
+                href={item.href}
+                aria-current={cur(item.href)}
+                onClick={close}
+              >
                 {t(item.key)}
               </Link>
             </li>
@@ -116,14 +153,22 @@ export default function Navbar() {
             aria-label="Menu"
             aria-expanded={open}
             aria-controls="nav-links"
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setMega(false);
+              setAppOpen(false);
+              setOpen((v) => !v);
+            }}
           >
-            {open ? "✕" : "☰"}
+            {open ? "\u2715" : "\u2630"}
           </button>
         </div>
       </nav>
 
-      <AppModal open={appOpen} anchor={anchor} onClose={() => setAppOpen(false)} />
+      <AppModal
+        open={appOpen}
+        anchor={anchor}
+        onClose={() => setAppOpen(false)}
+      />
       <MegaMenu open={mega} top={megaTop} onClose={() => setMega(false)} />
     </header>
   );

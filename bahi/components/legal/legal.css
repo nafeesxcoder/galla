@@ -1,0 +1,223 @@
+/* ==========================================================================
+   LEGAL PAGES + 404 CSS
+   "lp-" is the legal pages, "nf-" is the not found page.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+/* ---- the heading band --------------------------------------------------- */
+.lp-head {
+  padding: 3rem 0 2rem;
+  background: linear-gradient(180deg, var(--wash, #eef5f1), #fff);
+}
+.lp-head h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.2rem;
+}
+.lp-updated {
+  margin: 0 0 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+}
+.lp-head .lead {
+  max-width: 68ch;
+  margin: 0 0 0.7rem;
+}
+
+/* ---- the two columns ---------------------------------------------------- */
+.lp-main {
+  padding-top: 2.4rem;
+}
+.lp-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ---- contents down the side --------------------------------------------- */
+.lp-toc {
+  position: sticky;
+  top: 1.5rem;
+  padding: 1.2rem 1.1rem;
+  border-radius: 16px;
+  background: var(--wash, #eef5f1);
+}
+.lp-toc__title {
+  margin: 0 0 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--marigold, #f2a20c);
+}
+.lp-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: toc;
+  display: grid;
+  gap: 0.15rem;
+}
+.lp-toc li {
+  counter-increment: toc;
+}
+.lp-toc a {
+  display: block;
+  padding: 0.35rem 0.5rem 0.35rem 2.35rem;
+  position: relative;
+  border-radius: 7px;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: rgba(22, 32, 46, 0.72);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lp-toc a::before {
+  content: counter(toc) ".";
+  position: absolute;
+  left: 0.5rem;
+  font-weight: 700;
+  color: rgba(14, 107, 82, 0.4);
+}
+.lp-toc a:hover {
+  background: #fff;
+  color: var(--ledger, #0e6b52);
+}
+
+/* ---- the text itself ---------------------------------------------------- */
+.lp-body {
+  max-width: 72ch;
+}
+.lp-sec {
+  margin-bottom: 2.2rem;
+  /* so an anchor link does not put the heading under the navbar */
+  scroll-margin-top: 90px;
+}
+.lp-sec h2 {
+  display: flex;
+  gap: 0.55rem;
+  margin: 0 0 0.7rem;
+  font-size: 1.22rem;
+  line-height: 1.3;
+}
+.lp-sec__no {
+  flex: none;
+  color: rgba(14, 107, 82, 0.45);
+}
+.lp-sec p {
+  margin: 0 0 0.8rem;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: rgba(22, 32, 46, 0.82);
+}
+
+.lp-list {
+  list-style: none;
+  margin: 0.2rem 0 1rem;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.lp-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(22, 32, 46, 0.82);
+}
+.lp-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.72rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--marigold, #f2a20c);
+}
+
+.lp-foot {
+  margin: 2.6rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(22, 32, 46, 0.12);
+  font-size: 0.92rem;
+  color: rgba(22, 32, 46, 0.7);
+}
+.lp-foot a {
+  color: var(--ledger, #0e6b52);
+  font-weight: 600;
+}
+
+/* ---- 404 ---------------------------------------------------------------- */
+.nf {
+  padding: 4rem 0 5rem;
+}
+.nf__art {
+  max-width: 300px;
+  margin: 0 auto 1.6rem;
+}
+.nf__art svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.nf h1 {
+  margin: 0 0 0.6rem;
+}
+.nf .lead {
+  max-width: 46ch;
+  margin: 0 auto;
+}
+.nf__links {
+  list-style: none;
+  margin: 1.8rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.nf__links a {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: var(--wash, #eef5f1);
+  font-size: 0.89rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nf__links a:hover {
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.nf__btns {
+  justify-content: center;
+  margin-top: 1.8rem;
+}
+
+/* ---- responsive --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .lp-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+  .lp-toc {
+    position: static;
+  }
+  .lp-toc ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+  }
+}
+
+@media (max-width: 560px) {
+  .lp-head h1 {
+    font-size: 1.7rem;
+  }
+  .lp-toc ol {
+    grid-template-columns: 1fr;
+  }
+}

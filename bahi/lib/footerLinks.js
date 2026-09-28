@@ -56,7 +56,7 @@ export const FOOTER = [
       ["About us", "/about"],
       ["Careers", "/careers"],
       ["Partner with us", "/partner"],
-      ["Contact us", "/about"],
+      ["Contact us", "/contact"],
       ["Login", "/login"],
     ],
   },

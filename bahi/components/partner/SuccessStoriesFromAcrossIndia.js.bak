@@ -1,0 +1,86 @@
+// ===========================================================================
+// SECTION 6  -  "Success Stories from Across India"
+// ---------------------------------------------------------------------------
+// Ye wahi design hai jo screenshot me tha:
+//   - upar ek patti me 4 region tab (North / South / West / East)
+//   - niche har card do hisson me: left rang wala panel (photo + naam +
+//     role + amount ka badge), right safed panel (quote)
+//   - tab badalne par card slide-in animation ke saath aate hain
+//
+// RANG: left panel ka rang site ke green (--ledger) me hai. Screenshot me
+// laal tha. Laal chahiye to partner.css me  --pt-accent  badal do.
+//
+// TODO: abhi sab placeholder hai. Asli partner ki permission ke baad hi
+//       unka naam, photo aur kamai lagana.
+// IMAGE: content.js -> stories.items[region][].img
+// ===========================================================================
+
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import Shot from "./Shot";
+
+export default function SuccessStoriesFromAcrossIndia({ stories }) {
+  const [region, setRegion] = useState(stories.regions[0]);
+  const list = stories.items[region] ?? [];
+
+  return (
+    <section className="section">
+      <div className="wrap">
+        <Reveal className="center">
+          <span className="eyebrow pt-eyebrow">{stories.eyebrow}</span>
+          <h2 className="pt-underline">{stories.h2}</h2>
+          <p className="lead">{stories.lead}</p>
+        </Reveal>
+
+        {/* region tabs */}
+        <div className="pt-regions" role="tablist" aria-label="Region">
+          {stories.regions.map((r) => (
+            <button
+              key={r}
+              type="button"
+              role="tab"
+              aria-selected={r === region}
+              className={`pt-region ${r === region ? "is-on" : ""}`}
+              onClick={() => setRegion(r)}
+            >
+              {r}
+            </button>
+          ))}
+        </div>
+
+        {/* cards - key me region isliye hai taaki tab badalte hi
+            animation dobara chale */}
+        <div className="pt-stories" key={region}>
+          {list.map((s, i) => (
+            <article className="pt-story" key={`${region}-${i}`} style={{ animationDelay: `${i * 110}ms` }}>
+              <div className="pt-story__side">
+                <Shot
+                  src={s.img}
+                  art="avatar"
+                  initial={s.initial}
+                  label={s.imgLabel}
+                  alt={s.name}
+                  className="pt-story__pic"
+                />
+                <p className="pt-story__name">{s.name}</p>
+                <p className="pt-story__role">{s.role}</p>
+                <span className="pt-story__amount">{s.amount}</span>
+              </div>
+              <div className="pt-story__body">
+                <p>{s.quote}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="center pt-stories__cta">
+          <Link href={stories.cta[1]} className="btn btn--primary">
+            {stories.cta[0]}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}

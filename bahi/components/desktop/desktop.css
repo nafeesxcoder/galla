@@ -1,0 +1,403 @@
+/* ==========================================================================
+   DESKTOP PAGE CSS
+   Every class starts with "dk-" so nothing clashes with the other pages.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+/* ---- Image slot + drawings --------------------------------------------- */
+.dk-art {
+  display: block;
+  width: 100%;
+}
+.dk-art .art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.dk-shot__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+.dk-shot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 200px;
+  padding: 1.4rem;
+  text-align: center;
+  border: 2px dashed rgba(14, 107, 82, 0.28);
+  border-radius: 18px;
+  background: var(--wash, #eef5f1);
+  color: rgba(22, 32, 46, 0.55);
+  font-size: 0.86rem;
+}
+.dk-shot__mark {
+  width: 34px;
+  height: 26px;
+  border-radius: 5px;
+  border: 2px solid rgba(14, 107, 82, 0.35);
+  position: relative;
+}
+.dk-shot__mark::after {
+  content: "";
+  position: absolute;
+  inset: auto 4px 4px 4px;
+  height: 9px;
+  border-radius: 3px;
+  background: rgba(242, 162, 12, 0.5);
+}
+.dk-hero__art {
+  display: block;
+}
+
+/* ---- 2. Stat strip ------------------------------------------------------ */
+.dk-strip {
+  list-style: none;
+  margin: 0;
+  padding: 1.1rem 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  border: 1px solid rgba(14, 107, 82, 0.14);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(14, 107, 82, 0.06);
+}
+.dk-strip li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.dk-strip__icon {
+  width: 34px;
+  height: 34px;
+  padding: 7px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--wash, #eef5f1);
+  color: var(--ledger, #0e6b52);
+}
+.dk-strip__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.dk-strip strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--ink, #16202e);
+}
+.dk-strip em {
+  display: block;
+  font-style: normal;
+  font-size: 0.82rem;
+  color: rgba(22, 32, 46, 0.65);
+}
+.dk-strip__note {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: 0.92rem;
+  color: rgba(22, 32, 46, 0.65);
+}
+
+/* ---- 3. Comparison table ------------------------------------------------ */
+.dk-compare th,
+.dk-compare td {
+  vertical-align: middle;
+}
+.dk-compare__win {
+  background: rgba(14, 107, 82, 0.07);
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+}
+.dk-compare thead .dk-compare__win {
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+
+/* ---- 4. Top tabs -------------------------------------------------------- */
+.dk-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0 1.6rem;
+}
+.dk-tab {
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(14, 107, 82, 0.2);
+  background: #fff;
+  color: var(--ink, #16202e);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.dk-tab:hover {
+  border-color: var(--ledger, #0e6b52);
+}
+.dk-tab.is-on {
+  background: var(--ledger, #0e6b52);
+  border-color: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.dk-panel {
+  padding: 1.6rem;
+  border-radius: 18px;
+  background: var(--wash, #eef5f1);
+}
+.dk-panel h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+.dk-cta {
+  margin-top: 1rem;
+}
+
+/* ---- 6. Pricing --------------------------------------------------------- */
+.dk-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-top: 2.4rem;
+}
+.dk-plan {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.3rem 1.3rem;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.15);
+}
+.dk-plan.is-popular {
+  border-color: var(--ledger, #0e6b52);
+  box-shadow: 0 14px 34px rgba(14, 107, 82, 0.13);
+}
+.dk-plan__flag {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  background: var(--marigold, #f2a20c);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.dk-plan h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.dk-plan__price {
+  margin: 0.5rem 0 0.2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.dk-plan__price strong {
+  font-size: 1.7rem;
+  color: var(--ledger, #0e6b52);
+}
+.dk-plan__price span {
+  font-size: 0.85rem;
+  color: rgba(22, 32, 46, 0.6);
+}
+.dk-plan__note {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink, #16202e);
+}
+.dk-plan__sub {
+  margin: 0.15rem 0 0.9rem;
+  font-size: 0.82rem;
+  color: rgba(22, 32, 46, 0.6);
+}
+.dk-plan .checklist {
+  flex: 1;
+  margin-bottom: 1.1rem;
+}
+.dk-plan .checklist li {
+  font-size: 0.88rem;
+}
+.dk-plan__btn {
+  width: 100%;
+  justify-content: center;
+}
+.dk-plans__foot {
+  margin-top: 1.2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(22, 32, 46, 0.6);
+}
+
+/* ---- 8. Reviews --------------------------------------------------------- */
+.dk-reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.1rem;
+  margin-top: 2.2rem;
+}
+.dk-review {
+  height: 100%;
+  padding: 1.3rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+}
+.dk-art.dk-review__avatar {
+  width: auto;
+  margin-bottom: 0.9rem;
+}
+.dk-art .art.dk-avatar {
+  width: 68px;
+  height: 68px;
+}
+.dk-review blockquote {
+  margin: 0 0 1rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.dk-review__by {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.dk-review__by strong {
+  font-size: 0.94rem;
+}
+.dk-review__by span {
+  font-size: 0.82rem;
+  color: rgba(22, 32, 46, 0.62);
+}
+
+/* ---- 9. Video ----------------------------------------------------------- */
+.dk-video {
+  position: relative;
+  padding-top: 56.25%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--ink, #16202e);
+}
+.dk-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---- 10. Side tabs ------------------------------------------------------ */
+.dk-side {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 1.6rem;
+  margin-top: 2.4rem;
+  align-items: start;
+}
+.dk-side__list {
+  display: grid;
+  gap: 0.4rem;
+}
+.dk-side__btn {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink, #16202e);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.dk-side__btn:hover {
+  background: var(--wash, #eef5f1);
+}
+.dk-side__btn.is-on {
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.dk-side__body {
+  padding: 1.6rem;
+  border-radius: 18px;
+  background: var(--wash, #eef5f1);
+}
+.dk-side__body h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+.dk-side__body .dk-art,
+.dk-side__body .dk-shot,
+.dk-side__body .dk-shot__img {
+  max-width: 460px;
+  margin: 1rem auto 0;
+}
+
+/* ---- 12. Help band ------------------------------------------------------ */
+.dk-help {
+  padding: 2.4rem 1.6rem;
+  border-radius: 20px;
+  background: var(--wash, #eef5f1);
+  text-align: center;
+}
+.dk-help h2 {
+  margin-top: 0;
+}
+.dk-help p {
+  max-width: 54ch;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(22, 32, 46, 0.72);
+}
+.dk-help__btns {
+  justify-content: center;
+}
+.dk-help__badges {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.4rem;
+  font-size: 0.85rem;
+  color: rgba(22, 32, 46, 0.68);
+}
+.dk-help__badges li::before {
+  content: "\2713\00a0";
+  color: var(--ledger, #0e6b52);
+  font-weight: 700;
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .dk-side {
+    grid-template-columns: 1fr;
+  }
+  .dk-side__list {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    gap: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+  .dk-side__btn {
+    white-space: nowrap;
+  }
+  .dk-panel,
+  .dk-side__body {
+    padding: 1.2rem;
+  }
+}

@@ -1,0 +1,36 @@
+// ===========================================================================
+// SECTION 9  -  "How to Set Up Galla Billing Software Quickly"
+// 4 steps
+// IMAGE: content.js -> setup.img
+// ===========================================================================
+
+import Reveal from "@/components/Reveal";
+import Shot from "./Shot";
+
+export default function HowToSetUpQuickly({ setup }) {
+  return (
+    <section className="section">
+      <div className="wrap">
+        <Reveal className="center">
+          <span className="eyebrow">{setup.eyebrow}</span>
+          <h2>{setup.h2}</h2>
+          <p className="lead">{setup.lead}</p>
+        </Reveal>
+
+        <ol className="setup">
+          {setup.items.map(([t, d], i) => (
+            <Reveal as="li" key={t} delay={i * 90} className="setup__item">
+              <span className="setup__num">{i + 1}</span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </Reveal>
+          ))}
+        </ol>
+
+        <Reveal delay={200} className="ab-setup__shot">
+          <Shot src={setup.img} label={setup.imgLabel} alt={setup.h2} />
+        </Reveal>
+      </div>
+    </section>
+  );
+}

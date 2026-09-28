@@ -1,0 +1,35 @@
+// ===========================================================================
+// SECTION 3  -  "Supporting Local Small & Medium Businesses Across Every
+//                Corner of India"      (eyebrow: Nationwide Coverage)
+// IMAGE: content.js -> nationwide.img
+// ===========================================================================
+
+import Reveal from "@/components/Reveal";
+import Shot from "./Shot";
+
+export default function NationwideCoverage({ nationwide }) {
+  return (
+    <section className="section section--wash">
+      <div className="wrap artsplit">
+        <Reveal>
+          <span className="eyebrow">{nationwide.eyebrow}</span>
+          <h2>{nationwide.h2}</h2>
+          <p className="lead">{nationwide.lead}</p>
+
+          <div className="ab-ministats">
+            {nationwide.stats.map(([n, l]) => (
+              <div key={l} className="ab-stat">
+                <strong>{n}</strong>
+                <span>{l}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal className="artsplit__art" delay={140}>
+          <Shot src={nationwide.img} art={nationwide.art} label={nationwide.imgLabel} alt={nationwide.h2} />
+        </Reveal>
+      </div>
+    </section>
+  );
+}

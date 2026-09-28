@@ -1,0 +1,536 @@
+// ===========================================================================
+// DESKTOP PAGE KA SAARA TEXT + IMAGE PATHS
+// ---------------------------------------------------------------------------
+// Har section ka naam wahi hai jo us section ki heading hai, isliye
+// component file dhoondhna aasan hai.
+//
+// IMAGE KAISE LAGANI HAI:
+//   1. Image ko  public/  folder me rakho
+//   2. Yahan us section ke  img: ""  me path likh do -> img: "/meri-photo.png"
+//   3. Jab tak img khali hai, code wali drawing (Art.js) dikhegi.
+//
+// DHYAN DO - in jagah asli data dalna baaki hai (search karo "TODO"):
+//   - pricing plans ke daam
+//   - customer reviews ke naam aur quote
+//   - upar ke stat numbers
+// ===========================================================================
+
+export const CONTENT = {
+  // -------------------------------------------------------------------------
+  // 1. HERO  ->  HeroBillingSoftwareForPc.js
+  // -------------------------------------------------------------------------
+  hero: {
+    badge: "Windows and Mac",
+    h1: "Billing software for your PC",
+    lead: "A simple, fast billing app for your computer. Make professional GST invoices in seconds, track income and expenses, and keep your stock updated - all from your desktop. Free to download.",
+    cta: "Download for PC",
+    cta2: "See plans",
+    img: "/deshero.png", // <- asli screenshot lagana ho to yahan path do
+    art: "pc",
+    imgLabel: "Galla desktop app screen",
+    trust: ["Works offline", "Windows 7 se 11 tak", "Free plan available"],
+  },
+
+  // -------------------------------------------------------------------------
+  // 2. STAT STRIP  ->  TrustStatsStrip.js
+  // -------------------------------------------------------------------------
+  // TODO: asli numbers aane par yahan badal dena
+  stats: {
+    items: [
+      ["Free", "Download for PC", "download"],
+      ["Android + iOS", "Mobile app too", "phone"],
+      ["Multi-device", "Mobile aur desktop dono", "monitor"],
+      ["Multi-user", "Staff ke apne logins", "users"],
+    ],
+    note: "Galla desktop app Indian small businesses ke liye banaya gaya hai - wahi billing jo counter par chalti hai, ab bade screen par.",
+  },
+
+  // -------------------------------------------------------------------------
+  // 3. COMPARISON TABLE
+  //    ->  WhyGallaPcBillingIsBest.js
+  // -------------------------------------------------------------------------
+  compare: {
+    eyebrow: "Aamne saamne",
+    h2: "Why Galla PC Billing Software Is the Right Choice for Small Businesses",
+    lead: "Zyadatar desktop billing software ya to bahut mehnga hota hai ya bahut complicated. Yahan dono nahi.",
+    head: ["Feature", "Aam billing software", "Galla"],
+    rows: [
+      ["Starting price", "Paid only", "Free plan"],
+      ["Custom invoice formats", "Limited", "Yes"],
+      ["Professional invoice themes", "Few", "Multiple themes"],
+      ["Barcode scanning", "Add-on", "Built in"],
+      ["GST calculation and reports", "Partial", "Built in"],
+      ["Multiple payment modes", "Limited", "Cash, UPI, card, bank"],
+      ["Payment tracking and reminders", "Manual", "Automatic"],
+      ["Party / client management", "Basic", "Full ledger"],
+      ["Inventory tracking", "Separate module", "Same app"],
+      ["Mobile + desktop access", "Rarely", "Both, synced"],
+      ["Expense tracking", "Separate", "Same app"],
+      ["Real-time business reports", "End of month", "Live"],
+      ["Data backup", "Manual", "Automatic"],
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 4. FEATURE TABS  ->  KeyPcBillingFeatures.js
+  // -------------------------------------------------------------------------
+  keyFeatures: {
+    eyebrow: "Roz kaam aane wale",
+    h2: "Key PC Billing Features for Indian Small Businesses",
+    lead: "Jo cheezein counter par sabse zyada use hoti hain, wahi sabse aage rakhi hain.",
+    tabs: [
+      {
+        tab: "Tax Invoicing",
+        h3: "GST aur non-GST bill, dono",
+        p: "Apne computer par kuch hi click me professional GST bill banao. HSN/SAC code, tax breakup aur invoice number apne aap aa jate hain, isliye record hamesha sahi shape me rehta hai.",
+        points: [
+          "HSN / SAC code line ke saath",
+          "CGST, SGST, IGST ka alag breakup",
+          "Invoice number apne aap",
+          "Non-GST bill bhi usi jagah se",
+        ],
+        art: "invoice",
+        img: "",
+        imgLabel: "Tax invoice screen",
+      },
+      {
+        tab: "Quick Sale Entry",
+        h3: "Bhari bheed me tez billing",
+        p: "Barcode scan karo ya item ka naam type karna shuru karo - line apne aap bill me aa jayegi. Keyboard shortcuts se counter par haath mouse tak jaata hi nahi.",
+        points: [
+          "Barcode scanner support",
+          "Keyboard shortcuts se poora bill",
+          "Pichla rate apne aap yaad",
+          "Ek hi screen par payment bhi",
+        ],
+        art: "pos",
+        img: "",
+        imgLabel: "Quick sale entry screen",
+      },
+      {
+        tab: "Customize Your Bill",
+        h3: "Bill dikhe tumhari dukaan jaisa",
+        p: "Apna naam, logo, GSTIN aur terms ek baar daal do. Uske baad har bill jo counter se nikalta hai, tumhari branding ke saath nikalta hai.",
+        points: [
+          "Apna logo aur shop details",
+          "Kai invoice theme",
+          "Regular aur thermal printer dono",
+          "Apne custom fields add karo",
+        ],
+        art: "themes",
+        img: "",
+        imgLabel: "Invoice theme picker",
+      },
+      {
+        tab: "Easy Payment Modes",
+        h3: "Har tarah ka payment, ek hi bill par",
+        p: "Cash, UPI, card ya bank transfer - jaisa customer de, waise record ho jata hai. Aadha abhi aadha baad me ho to wo bhi bill par saaf dikhta hai.",
+        points: [
+          "Cash, UPI, card, bank transfer",
+          "Part payment aur baaki udhaar",
+          "Party ka ledger apne aap update",
+          "Payment reminder bhejo",
+        ],
+        art: "payments",
+        img: "",
+        imgLabel: "Payment modes screen",
+      },
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 5. WINDOWS / MAC  ->  UniversalDesktopCompatibility.js
+  // -------------------------------------------------------------------------
+  compatibility: {
+    eyebrow: "Chalega kahan",
+    h2: "Tumhara computer jo bhi ho, Galla usme chalta hai",
+    lead: "Naya system ya purana, Windows ya Mac - billing rukni nahi chahiye.",
+    blocks: [
+      {
+        h3: "Works on Windows",
+        points: [
+          "Windows 7, 8, 10 aur 11 - sab par chalta hai",
+          "Purane aur kam RAM wale system par bhi smooth",
+          "Regular update, taaki naye Windows ke saath chalta rahe",
+        ],
+        art: "windows",
+        img: "",
+        imgLabel: "Galla on a Windows PC",
+        cta: ["Download for Windows", "/mobile-app"],
+      },
+      {
+        h3: "Works on Mac",
+        points: [
+          "Mac par aasan installation",
+          "macOS ke naye versions par bhi wahi features",
+          "Real-time sync, isliye mobile aur Mac hamesha ek jaise",
+        ],
+        art: "mac",
+        img: "",
+        imgLabel: "Galla on a Mac",
+        cta: ["Download for Mac", "/mobile-app"],
+      },
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 6. PRICING  ->  DesktopAppPricing.js
+  // -------------------------------------------------------------------------
+  // TODO: ye daam abhi PLACEHOLDER hain. Apne asli plan aur price daalo.
+  //       Jis plan par "popular: true" hoga, wo highlight dikhega.
+  pricing: {
+    eyebrow: "Plans",
+    h2: "Galla Desktop App Pricing",
+    lead: "Jitna chahiye utna hi lo. Pehle free me chalakar dekho, fir decide karo.",
+    plans: [
+      {
+        name: "Free Trial",
+        price: "₹0",
+        per: "7 din",
+        note: "Shuru karne ke liye",
+        sub: "Saare features khule hue",
+        points: [
+          "Custom invoice / billing",
+          "GSTR reports",
+          "Expense tracking",
+          "Fixed assets",
+          "WhatsApp integration",
+          "Import parties",
+          "Audit trail",
+        ],
+        cta: "Start free trial",
+      },
+      {
+        name: "Silver",
+        price: "₹2,999",
+        per: "saal",
+        note: "Chhoti dukaan ke liye",
+        sub: "Ek counter, roz ki billing",
+        points: [
+          "3 firm / business",
+          "Invoice aur bill banana",
+          "Custom templates",
+          "Bulk item update",
+          "Balance sheet",
+          "GSTR reports",
+          "Expense tracking",
+        ],
+        cta: "Start free trial",
+      },
+      {
+        name: "Gold",
+        price: "₹3,999",
+        per: "saal",
+        note: "Badhti hui business ke liye",
+        sub: "Sabse zyada liya jane wala",
+        popular: true,
+        points: [
+          "Silver ke saare features",
+          "5 firm / organisation",
+          "Multi-device sync",
+          "E-way bill / e-invoice",
+          "Low stock alerts",
+          "Bill-wise profit / loss",
+          "Item custom fields",
+          "TCS / TDS on invoices",
+        ],
+        cta: "Start free trial",
+      },
+      {
+        name: "Retail Pro",
+        price: "₹7,999",
+        per: "saal",
+        note: "Bade setup ke liye",
+        sub: "Kai counter, kai log",
+        points: [
+          "Gold ke saare features",
+          "Party management",
+          "Poori reports ki list",
+          "Tally import / export",
+          "Accountant access",
+          "Marketing tools",
+          "Online store",
+          "Priority support",
+        ],
+        cta: "Start free trial",
+      },
+    ],
+    foot: "Saare plan me GST alag se lagega. Plan kabhi bhi upgrade kar sakte ho.",
+  },
+
+  // -------------------------------------------------------------------------
+  // 7. SIX CARDS  ->  EasyManagementOfAllBillingProcesses.js
+  // -------------------------------------------------------------------------
+  manage: {
+    eyebrow: "Ek hi jagah",
+    h2: "Computer par poori billing ka intezaam",
+    lead: "Bill banane se lekar paisa aane tak, beech ka har kadam isi app me.",
+    items: [
+      [
+        "Offline Billing",
+        "Internet na ho tab bhi bill banta rahega. Jaise hi connection wapas aata hai, data apne aap sync ho jata hai.",
+        "shield",
+      ],
+      [
+        "Estimate aur Quotation",
+        "Bill final karne se pehle estimate ya quotation bana kar bhej do. Customer haan kahe to ek click me invoice ban jata hai.",
+        "doc",
+      ],
+      [
+        "E-invoice aur E-way Bill",
+        "GST rules ke hisaab se e-invoice aur e-way bill usi bill se bana lo jo abhi banaya hai - dobara type karne ki zarurat nahi.",
+        "receipt",
+      ],
+      [
+        "Multi-User Access",
+        "Staff ko apne login do aur tay karo ki kaun kya dekh sakta hai. Billing, stock aur reports - sabka alag access.",
+        "users",
+      ],
+      [
+        "Purchase Bill Scan",
+        "Supplier ka bill scan karo aur wo purchase entry ban jata hai. Line by line type karne ka kaam bach jata hai.",
+        "box",
+      ],
+      [
+        "Loyalty Points aur Discount",
+        "Regular customers ke liye points aur discount chalao, taaki wo baar baar aayein.",
+        "tag",
+      ],
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 8. REVIEWS  ->  WhatCustomersAreSaying.js
+  // -------------------------------------------------------------------------
+  // TODO: ye sab PLACEHOLDER hain. Asli review aane par naam, quote aur
+  //       source badal dena. Jab tak asli nahi hai, ye section chhupa rakhna
+  //       behtar hai - Page.js me iski line comment kar sakte ho.
+  reviews: {
+    eyebrow: "Customers",
+    h2: "Galla ke PC app ke baare me log kya kehte hain",
+    lead: "Asli review aane par yahan lag jayenge. Abhi placeholder hai.",
+    items: [
+      {
+        quote: "Review yahan aayega. Abhi placeholder hai.",
+        name: "Review placeholder 1",
+        role: "Business type - city",
+        initial: "A",
+        img: "",
+        imgLabel: "Customer photo 1",
+      },
+      {
+        quote: "Review yahan aayega. Abhi placeholder hai.",
+        name: "Review placeholder 2",
+        role: "Business type - city",
+        initial: "B",
+        img: "",
+        imgLabel: "Customer photo 2",
+      },
+      {
+        quote: "Review yahan aayega. Abhi placeholder hai.",
+        name: "Review placeholder 3",
+        role: "Business type - city",
+        initial: "C",
+        img: "",
+        imgLabel: "Customer photo 3",
+      },
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 9. DEMO / VIDEO  ->  WatchHowToCreateBills.js
+  // -------------------------------------------------------------------------
+  demo: {
+    eyebrow: "Demo",
+    h2: "Dekho apne laptop par bill kaise banta hai",
+    lead: "Kuch click me GST-ready bill, customer ko turant share, aur manual likhne ka kaam khatam.",
+    // Video aane par yahan YouTube ka embed link daal dena, jaise:
+    // video: "https://www.youtube.com/embed/XXXXXXXXXXX"
+    video: "",
+    img: "",
+    art: "play",
+    imgLabel: "Demo video thumbnail",
+    cta: "Download for PC",
+  },
+
+  // -------------------------------------------------------------------------
+  // 10. WHY PERFECT (tabs)  ->  WhyGallaInvoicingIsPerfect.js
+  // -------------------------------------------------------------------------
+  perfect: {
+    eyebrow: "Aur bhi bahut kuch",
+    h2: "Why Galla Invoicing Software for PC Fits Small Businesses",
+    lead: "Billing ke aas paas ka poora kaam bhi isi app me ho jata hai.",
+    tabs: [
+      {
+        tab: "Direct Print",
+        h3: "Bill turant print, do tarah ke printer par",
+        p: "Customer ko hard copy chahiye to seedha print do. Regular printer ke liye alag theme aur thermal printer (2 inch aur 3 inch) ke liye alag theme milte hain.",
+        art: "printer",
+        img: "",
+        imgLabel: "Printer support",
+      },
+      {
+        tab: "Business Reports",
+        h3: "Reports jo sach me kaam aati hain",
+        p: "Sales, purchase, party balance, stock aur profit - sab ek jagah. Date range chuno aur report turant nikal aati hai.",
+        art: "report",
+        img: "",
+        imgLabel: "Business reports screen",
+      },
+      {
+        tab: "Custom Fields",
+        h3: "Apne business ke hisaab se fields",
+        p: "Har business alag hota hai. Item, party ya invoice par apne khud ke fields add karo - vehicle number, warranty, batch, jo bhi chahiye.",
+        art: "fields",
+        img: "",
+        imgLabel: "Custom fields screen",
+      },
+      {
+        tab: "Multi-device Sync",
+        h3: "Computer aur phone hamesha ek jaise",
+        p: "Counter par computer, bahar jaate waqt phone. Dono me wahi data, bina kuch kiye.",
+        art: "sync",
+        img: "",
+        imgLabel: "Multi-device sync",
+      },
+      {
+        tab: "WhatsApp",
+        h3: "Bill aur reminder WhatsApp par",
+        p: "Bill banate hi customer ko WhatsApp par bhej do. Payment due ho to reminder bhi wahin se chala jata hai.",
+        art: "whatsapp",
+        img: "",
+        imgLabel: "WhatsApp sharing",
+      },
+      {
+        tab: "Cash and Bank",
+        h3: "Cash aur bank, dono ka hisaab",
+        p: "Kitna cash counter me hai aur bank me kitna - dono ka balance roz saaf dikhta hai.",
+        art: "cash",
+        img: "",
+        imgLabel: "Cash and bank screen",
+      },
+      {
+        tab: "Stock",
+        h3: "Stock apne aap update",
+        p: "Bill banate hi stock kam ho jata hai. Kaunsa item tez bik raha hai aur kaunsa khatam hone wala hai, dono pata rehta hai.",
+        art: "stock",
+        img: "",
+        imgLabel: "Stock tracking screen",
+      },
+      {
+        tab: "Orders",
+        h3: "Order booking se delivery tak",
+        p: "Sale aur purchase order banao, delivery challan nikalo, aur order kis stage par hai wo dekhte raho.",
+        art: "orders",
+        img: "",
+        imgLabel: "Order management screen",
+      },
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 11. MORE THAN BILLING  ->  MoreThanJustBilling.js
+  // -------------------------------------------------------------------------
+  more: {
+    eyebrow: "Sirf billing nahi",
+    h2: "Galla desktop app billing se aage kya karta hai",
+    lead: "Bill to bas shuruaat hai. Business chalane ka baaki hisaab bhi yahin hai.",
+    items: [
+      [
+        "Accounting saaf rehti hai",
+        "Expense apne aap track hote hain, financial reports ban jaati hain aur GST ka hisaab jagah par rehta hai. CA ko dene layak record hamesha tayar.",
+        "ledger",
+      ],
+      [
+        "Stock apne aap update",
+        "Billing aur inventory jude hue hain. Har invoice ke saath stock kam hota hai, isliye kaunsa item tez bik raha hai wo real time me pata chalta hai - aur kam hone par alert bhi.",
+        "box",
+      ],
+      [
+        "Kharcha kahan ja raha hai",
+        "Paisa aana to bill se dikh jata hai, par jana kahan raha hai wo asli sawaal hai. Chai ke bill se lekar supplier payment tak, sab yahan record ho sakta hai.",
+        "receipt",
+      ],
+      [
+        "Business ki health ek nazar me",
+        "Desktop app ko sirf bill banane ki jagah mat samjho. Bank balance, cash in hand, total sales aur expense - sab ek dashboard par.",
+        "monitor",
+      ],
+      [
+        "Party ka poora hisaab",
+        "Customer aur supplier, dono ek jagah. Kisne kitna dena hai, kisko kitna dena hai aur pichla poora transaction history - sab saamne.",
+        "users",
+      ],
+      [
+        "Thoda marketing bhi",
+        "Tyohar ki badhai, khaas offer ya ek chhota campaign - WhatsApp par apne hi customers ko bhejo, bina kisi designer ke.",
+        "tag",
+      ],
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 12. HELP BAND  ->  NeedHelpInstalling.js
+  // -------------------------------------------------------------------------
+  help: {
+    h2: "Install karne me madad chahiye?",
+    lead: "Download se pehla bill banne tak - minute ka kaam hai, din ka nahi. Phir bhi atak jao to hum hain.",
+    cta: ["Download for PC", "/mobile-app"],
+    cta2: ["Talk to sales", "/partner"],
+    badges: [
+      "Secure aur encrypted",
+      "Offline bhi chalta hai",
+      "Support 9+ bhashaon me",
+    ],
+  },
+
+  // -------------------------------------------------------------------------
+  // 13. FAQ  ->  FrequentlyAskedQuestions.js
+  // -------------------------------------------------------------------------
+  faqs: [
+    [
+      "PC billing software hota kya hai?",
+      "Ye computer par chalne wala ek program hai jo billing aur invoicing ka kaam sambhalta hai. Isse bill bante hain, payment track hota hai aur business ke saare financial record ek jagah rehte hain.",
+    ],
+    [
+      "Mujhe PC ke liye Galla ki zarurat kyun hai?",
+      "Bada screen, keyboard aur printer - counter par yahi teenon sabse tez kaam karte hain. Galla desktop app invoicing automatic kar deta hai, galtiyan kam karta hai aur business ka poora picture ek jagah dikhata hai.",
+    ],
+    [
+      "Desktop app me kya kya milta hai?",
+      "GST billing, reports, printing aur sharing, payment reminders, custom bill templates, barcode scanning, cash flow, backup, party management, expense management aur sales / purchase orders.",
+    ],
+    [
+      "Kya isme alag alag payment modes chalte hain?",
+      "Haan. Cash, UPI, card, cheque aur bank transfer - sab record ho jate hain, aur part payment bhi.",
+    ],
+    [
+      "Kya ye Windows par chalta hai?",
+      "Haan. Windows 7, 8, 10 aur 11 par chalta hai, aur kam RAM wale purane system par bhi theek chalta hai.",
+    ],
+    [
+      "Kya free me try kar sakte hain?",
+      "Haan. Free trial me saare features khule rehte hain, taaki paise dene se pehle poora app dekh lo.",
+    ],
+    [
+      "PC par bill kaise banate hain?",
+      "App kholo, Sales me jao, naya sale banao, customer daalo, item add karo, discount ya tax lagao, ek baar check karo, aur bill share karke payment le lo.",
+    ],
+    [
+      "Kya ye tax ka hisaab rakhta hai?",
+      "Galla sales aur expenses ka poora record rakhta hai aur usi se GST reports banata hai. Return file karna tumhare aur tumhare CA ke haath me rehta hai, par data sahi shape me milta hai.",
+    ],
+    [
+      "Internet na ho to?",
+      "Billing offline chalti rehti hai. Connection wapas aate hi data apne aap sync ho jata hai, isliye customer ko rukna nahi padta.",
+    ],
+    [
+      "Mera thermal printer aur barcode scanner chalega?",
+      "Haan. Laser aur thermal printer (2 inch aur 3 inch) dono support hain, aur koi bhi USB ya Bluetooth barcode scanner laga sakte ho.",
+    ],
+    [
+      "Kya mobile aur desktop ka data ek rahega?",
+      "Haan. Multi-device sync wale plan me jo mobile par karoge wo computer par dikhega aur ulta bhi.",
+    ],
+  ],
+};

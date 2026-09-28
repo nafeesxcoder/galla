@@ -1,0 +1,387 @@
+/* ==========================================================================
+   ABOUT PAGE CSS
+   Every class starts with "ab-" so nothing clashes with the other pages.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+/* ---- 1. Hero art -------------------------------------------------------- */
+.ab-hero__art {
+  position: relative;
+}
+.ab-hero__art img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+}
+
+/* ---- Image slot (Shot.js) ---------------------------------------------- */
+.ab-shot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 220px;
+  padding: 1.4rem;
+  text-align: center;
+  border: 2px dashed rgba(14, 107, 82, 0.28);
+  border-radius: 18px;
+  background: var(--wash, #eef5f1);
+  color: rgba(22, 32, 46, 0.55);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+.ab-shot__mark {
+  width: 34px;
+  height: 26px;
+  border-radius: 5px;
+  border: 2px solid rgba(14, 107, 82, 0.35);
+  position: relative;
+  flex: none;
+}
+.ab-shot__mark::after {
+  content: "";
+  position: absolute;
+  inset: auto 4px 4px 4px;
+  height: 9px;
+  border-radius: 3px 3px 2px 2px;
+  background: rgba(242, 162, 12, 0.5);
+}
+.ab-shot__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+
+/* ---- 2. Trust strip ----------------------------------------------------- */
+.ab-strip {
+  list-style: none;
+  margin: 0 0 2.4rem;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
+  justify-content: center;
+  border: 1px solid rgba(14, 107, 82, 0.14);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(14, 107, 82, 0.06);
+}
+.ab-strip li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink, #16202e);
+}
+.ab-strip__icon {
+  width: 22px;
+  height: 22px;
+  color: var(--ledger, #0e6b52);
+  flex: none;
+}
+.ab-strip__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Stats -------------------------------------------------------------- */
+.ab-ministats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.6rem;
+}
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.ab-stat {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+}
+.ab-stat strong {
+  display: block;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--ledger, #0e6b52);
+}
+.ab-stat span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.83rem;
+  color: rgba(22, 32, 46, 0.68);
+}
+
+/* ---- 4. Business journey ------------------------------------------------ */
+.ab-journey {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.ab-journey__item {
+  position: relative;
+  padding: 1.6rem 1.3rem 1.3rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+}
+.ab-journey__no {
+  position: absolute;
+  top: -14px;
+  left: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 28px;
+  border-radius: 9px;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.ab-journey__time {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(22, 32, 46, 0.5);
+}
+.ab-journey__item h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+.ab-journey__item p {
+  margin: 0 0 0.9rem;
+  font-size: 0.92rem;
+}
+.ab-journey__tag {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: var(--wash, #eef5f1);
+  color: var(--ledger, #0e6b52);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ---- 6. Stories --------------------------------------------------------- */
+.ab-stories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.1rem;
+  margin-top: 2.2rem;
+}
+.ab-story {
+  height: 100%;
+  padding: 1.3rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+}
+.ab-story__shot {
+  min-height: 150px;
+  margin-bottom: 1rem;
+}
+.ab-story blockquote {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink, #16202e);
+}
+.ab-story__by {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ab-story__by strong {
+  font-size: 0.95rem;
+}
+.ab-story__by span {
+  font-size: 0.82rem;
+  color: rgba(22, 32, 46, 0.62);
+}
+.ab-stories__stats {
+  margin-top: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+/* ---- Inline arrow link -------------------------------------------------- */
+.ab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ledger, #0e6b52);
+  text-decoration: none;
+}
+.ab-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- 9. Setup shot ------------------------------------------------------ */
+.ab-setup__shot {
+  display: block;
+  margin-top: 2rem;
+}
+
+/* ---- 10. Difference band ------------------------------------------------ */
+.ab-diff {
+  background: var(--wash, #eef5f1);
+}
+
+/* ---- 11. Growth --------------------------------------------------------- */
+.ab-growth {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2.2rem;
+}
+.ab-growth__list {
+  display: grid;
+  gap: 0.9rem;
+}
+.ab-growth__item {
+  display: flex;
+  gap: 0.9rem;
+  padding: 1.15rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+}
+.ab-growth__item h3 {
+  margin: 0.25rem 0 0.35rem;
+  font-size: 1.02rem;
+}
+.ab-growth__item p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+.ab-growth__tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--marigold, #f2a20c);
+}
+.ab-growth__art {
+  display: block;
+}
+
+/* ---- 12. Languages ------------------------------------------------------ */
+.ab-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.4rem 0 1rem;
+}
+.ab-langs span {
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.18);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink, #16202e);
+}
+
+/* ---- 13. Press logos ---------------------------------------------------- */
+.ab-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+.ab-logos__item .ab-shot {
+  min-height: 92px;
+  font-size: 0.78rem;
+}
+.ab-logos__item .ab-shot__img {
+  max-height: 92px;
+  width: auto;
+  margin: 0 auto;
+}
+
+/* ---- 15. App list ------------------------------------------------------- */
+.ab-applist {
+  list-style: none;
+  margin: 1.4rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.ab-applist li {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.6rem;
+  position: relative;
+}
+.ab-applist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--marigold, #f2a20c);
+}
+.ab-applist strong {
+  font-size: 0.98rem;
+}
+.ab-applist span {
+  font-size: 0.9rem;
+  color: rgba(22, 32, 46, 0.7);
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .ab-growth {
+    grid-template-columns: 1fr;
+  }
+  .ab-strip {
+    gap: 0.7rem 1.2rem;
+  }
+}
+
+/* ---- Code-drawn artwork (Art.js) --------------------------------------- */
+.ab-art {
+  display: block;
+  width: 100%;
+}
+.ab-art .art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ab-art .art.ab-avatar {
+  width: 78px;
+  height: 78px;
+}
+.ab-story__avatar {
+  width: auto;
+  margin-bottom: 0.9rem;
+}
+
+/* the placeholder box now only appears where there is no photo and no drawing */
+.ab-logos__item .ab-art .art {
+  max-height: 86px;
+}

@@ -1,59 +1,30 @@
-﻿import { pageMeta } from "@/lib/seo";
-import PricingPlans from "./PricingPlans";
+import PricingPage, { pricingMeta, pricingFaqs } from "@/components/pricing/Page";
+import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Pricing",
-  description:
-    "Simple pricing with a free plan. Compare Basic, Silver and Gold plans for GST billing, inventory and reports.",
+  title: pricingMeta.title,
+  description: pricingMeta.description,
   path: "/pricing",
 });
 
-const rows = [
-  ["GST invoices", "âœ“", "âœ“", "âœ“"],
-  ["Devices", "1", "3", "Unlimited"],
-  ["GST reports", "â€”", "âœ“", "âœ“"],
-  ["E-way bill", "â€”", "âœ“", "âœ“"],
-  ["Multiple godowns", "â€”", "â€”", "âœ“"],
-  ["Staff login", "â€”", "â€”", "âœ“"],
-];
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: pricingFaqs.map(([q, a]) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
 
-const faqs = [
-  ["Can I make GST bills on the free plan?", "Yes. The Basic plan includes unlimited GST and non-GST invoices."],
-  ["Can I upgrade in the middle of a plan?", "Yes, any time. The unused amount is adjusted against the new plan."],
-  ["Is my data safe?", "Data is stored with encrypted backups and you can export it to Excel whenever you want."],
-  ["Do you give refunds?", "You get a full refund within 7 days of purchase."],
-];
-
-export default function Pricing() {
+export default function Page() {
   return (
     <>
-      <section className="section center">
-        <div className="wrap">
-          <h1>Simple pricing, no hidden charges</h1>
-          <p className="lead">Start free. Upgrade when you need more.</p>
-          <PricingPlans />
-        </div>
-      </section>
-      <section className="section section--wash">
-        <div className="wrap">
-          <h2>Compare plans</h2>
-          <div className="table-wrap">
-            <table className="compare">
-              <thead><tr><th>Feature</th><th>Basic</th><th>Silver</th><th>Gold</th></tr></thead>
-              <tbody>{rows.map((r) => <tr key={r[0]}>{r.map((c, i) => <td key={i}>{c}</td>)}</tr>)}</tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="wrap">
-          <h2 className="center">Frequently asked questions</h2>
-          <div className="faq">
-            {faqs.map(([q, a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}
-          </div>
-        </div>
-      </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <PricingPage />
     </>
   );
 }
-

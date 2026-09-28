@@ -1,0 +1,47 @@
+// ===========================================================================
+// SECTION 9  -  "Watch How a Bill Is Created on Your Laptop"
+// ---------------------------------------------------------------------------
+// VIDEO: put a YouTube embed link in content.js -> demo.video, for example
+//        video: "https://www.youtube.com/embed/XXXXXXXXXXX"
+//        While it is empty, the drawing is shown instead.
+// IMAGE: content.js -> demo.img
+// ===========================================================================
+
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import Shot from "./Shot";
+
+export default function WatchHowToCreateBills({ demo }) {
+  return (
+    <section className="section section--wash">
+      <div className="wrap artsplit">
+        <Reveal>
+          <span className="eyebrow">{demo.eyebrow}</span>
+          <h2>{demo.h2}</h2>
+          <p className="lead">{demo.lead}</p>
+          <div className="btn-row">
+            <Link href="/mobile-app" className="btn btn--primary">
+              {demo.cta}
+            </Link>
+          </div>
+        </Reveal>
+
+        <Reveal className="artsplit__art" delay={140}>
+          {demo.video ? (
+            <div className="dk-video">
+              <iframe
+                src={demo.video}
+                title={demo.h2}
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <Shot src={demo.img} art={demo.art} label={demo.imgLabel} alt={demo.h2} />
+          )}
+        </Reveal>
+      </div>
+    </section>
+  );
+}

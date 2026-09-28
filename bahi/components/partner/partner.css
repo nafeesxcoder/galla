@@ -1,0 +1,886 @@
+/* ==========================================================================
+   PARTNER PAGE CSS
+   Every class starts with "pt-" so nothing clashes with the other pages.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+:root {
+  /* Accent colour: the left panel of the success-story cards, the pill
+     above the product heading and the highlighted words in it.
+     The screenshot used red - for red, set this to #e02a37. */
+  --pt-accent: var(--ledger, #0e6b52);
+  --pt-accent-soft: rgba(14, 107, 82, 0.08);
+}
+
+/* ---- Animations --------------------------------------------------------- */
+@keyframes pt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pt-slide {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pt-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-chips span,
+  .pt-points li,
+  .pt-story,
+  .pt-get li,
+  .pt-underline::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ---- Image slot --------------------------------------------------------- */
+.pt-art {
+  display: block;
+  width: 100%;
+}
+.pt-art .art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.pt-shot__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+.pt-shot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 200px;
+  padding: 1.4rem;
+  text-align: center;
+  border: 2px dashed rgba(14, 107, 82, 0.28);
+  border-radius: 18px;
+  background: var(--wash, #eef5f1);
+  color: rgba(22, 32, 46, 0.55);
+  font-size: 0.86rem;
+}
+.pt-shot__mark {
+  width: 34px;
+  height: 26px;
+  border-radius: 5px;
+  border: 2px solid rgba(14, 107, 82, 0.35);
+  position: relative;
+}
+.pt-shot__mark::after {
+  content: "";
+  position: absolute;
+  inset: auto 4px 4px 4px;
+  height: 9px;
+  border-radius: 3px;
+  background: rgba(242, 162, 12, 0.5);
+}
+
+/* ---- 1. Hero ------------------------------------------------------------ */
+.pt-hero {
+  padding-bottom: 3.4rem;
+}
+.pt-crumb {
+  margin: 0 0 1.2rem;
+  font-size: 0.84rem;
+  color: rgba(22, 32, 46, 0.55);
+}
+.pt-crumb em {
+  font-style: normal;
+  opacity: 0.6;
+}
+.pt-hero__grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 2.6rem;
+  align-items: center;
+}
+.pt-hero__h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ledger, #0e6b52);
+}
+.pt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.3rem 0 1rem;
+}
+.pt-chips span {
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.2);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+  opacity: 0;
+  animation: pt-rise 0.5s ease forwards;
+}
+.pt-ticks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.4rem;
+  font-size: 0.85rem;
+  color: rgba(22, 32, 46, 0.68);
+}
+.pt-ticks li::before {
+  content: "\2713\00a0";
+  color: var(--ledger, #0e6b52);
+  font-weight: 700;
+}
+
+/* ---- Form --------------------------------------------------------------- */
+.pt-form {
+  padding: 1.6rem;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.15);
+  box-shadow: 0 18px 44px rgba(14, 107, 82, 0.1);
+}
+.pt-form h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+.pt-form__sub {
+  margin: 0.3rem 0 1.2rem;
+  font-size: 0.88rem;
+  color: rgba(22, 32, 46, 0.65);
+}
+.pt-field {
+  display: block;
+  margin-bottom: 0.95rem;
+}
+.pt-field > span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(22, 32, 46, 0.75);
+}
+.pt-field input {
+  width: 100%;
+  padding: 0.72rem 0.9rem;
+  border-radius: 11px;
+  border: 1px solid rgba(14, 107, 82, 0.22);
+  background: #fff;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--ink, #16202e);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.pt-field input:focus {
+  outline: none;
+  border-color: var(--ledger, #0e6b52);
+  box-shadow: 0 0 0 3px rgba(14, 107, 82, 0.14);
+}
+.pt-field__phone {
+  display: flex;
+  align-items: stretch;
+  border-radius: 11px;
+  border: 1px solid rgba(14, 107, 82, 0.22);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.pt-field__phone:focus-within {
+  border-color: var(--ledger, #0e6b52);
+  box-shadow: 0 0 0 3px rgba(14, 107, 82, 0.14);
+}
+.pt-field__phone em {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  font-style: normal;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: var(--wash, #eef5f1);
+  color: var(--ledger, #0e6b52);
+}
+.pt-field__phone input {
+  border: 0;
+  border-radius: 0;
+  flex: 1;
+  min-width: 0;
+}
+.pt-field__phone input:focus {
+  box-shadow: none;
+}
+.pt-form__err {
+  margin: 0 0 0.8rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #b4231f;
+}
+.pt-form__btn {
+  width: 100%;
+  justify-content: center;
+}
+.pt-form--done {
+  text-align: center;
+}
+.pt-form__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  padding: 13px;
+  margin-bottom: 0.8rem;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+  animation: pt-rise 0.4s ease;
+}
+.pt-form__tick svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Hover lift on cards ------------------------------------------------ */
+.pt-lift {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.pt-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(14, 107, 82, 0.12);
+}
+
+/* ---- 3. CA points ------------------------------------------------------- */
+.pt-points {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.pt-points li {
+  display: flex;
+  gap: 0.8rem;
+  opacity: 0;
+  animation: pt-rise 0.5s ease forwards;
+}
+.pt-points__tick {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.pt-points__tick svg {
+  width: 100%;
+  height: 100%;
+}
+.pt-points strong {
+  display: block;
+  font-size: 1rem;
+}
+.pt-points p {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  color: rgba(22, 32, 46, 0.72);
+}
+.pt-foot {
+  margin-top: 0.9rem;
+  font-size: 0.84rem;
+  color: rgba(22, 32, 46, 0.6);
+}
+
+/* ---- 5. Steps ----------------------------------------------------------- */
+.pt-steps {
+  list-style: none;
+  margin: 2.6rem 0 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.1rem;
+}
+.pt-step {
+  position: relative;
+  padding: 2rem 1.3rem 1.3rem;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+  overflow: hidden;
+}
+.pt-step__no {
+  position: absolute;
+  top: -0.5rem;
+  right: 0.6rem;
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--pt-accent-soft);
+  pointer-events: none;
+}
+.pt-step h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.08rem;
+}
+.pt-step p {
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+/* ==========================================================================
+   6. SUCCESS STORIES  (the design from the screenshot)
+   ========================================================================== */
+.pt-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.45rem;
+}
+.pt-underline::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 0;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--marigold, #f2a20c);
+  transform-origin: left;
+  animation: pt-grow 0.6s ease forwards;
+}
+
+.pt-regions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 760px;
+  margin: 2.2rem auto 2rem;
+  border-radius: 14px;
+  background: var(--pt-accent-soft);
+  overflow: hidden;
+}
+.pt-region {
+  padding: 0.95rem 0.6rem;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ink, #16202e);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pt-region:hover {
+  background: rgba(14, 107, 82, 0.12);
+}
+.pt-region.is-on {
+  background: var(--pt-accent);
+  color: #fff;
+}
+
+.pt-stories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1.6rem;
+}
+.pt-story {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: stretch;
+  opacity: 0;
+  animation: pt-slide 0.5s ease forwards;
+}
+.pt-story__side {
+  padding: 1.3rem 1rem;
+  border-radius: 16px;
+  background: var(--pt-accent);
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 26px rgba(14, 107, 82, 0.22);
+}
+.pt-art.pt-story__pic {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 0.7rem;
+}
+.pt-art .art.pt-avatar {
+  width: 92px;
+  height: 92px;
+}
+.pt-story__name {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.pt-story__role {
+  margin: 0.15rem 0 0.8rem;
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+.pt-story__amount {
+  display: inline-block;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--pt-accent);
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pt-story__body {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 1rem -14px;
+  padding: 1.4rem 1.4rem 1.4rem 2.2rem;
+  border-radius: 0 16px 16px 0;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+  border-left: 0;
+  box-shadow: 0 8px 22px rgba(14, 107, 82, 0.07);
+}
+.pt-story__body p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(22, 32, 46, 0.82);
+}
+.pt-stories__cta {
+  margin-top: 2.2rem;
+}
+
+/* ---- 8. Calculator ------------------------------------------------------ */
+.pt-calc {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 1.4rem;
+  margin-top: 2.4rem;
+  align-items: stretch;
+}
+.pt-calc__box,
+.pt-get {
+  padding: 1.6rem;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.15);
+}
+.pt-get {
+  background: var(--wash, #eef5f1);
+}
+.pt-calc__box h3,
+.pt-get h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.pt-calc__sub {
+  margin: 0.3rem 0 1.5rem;
+  font-size: 0.88rem;
+  color: rgba(22, 32, 46, 0.65);
+}
+.pt-calc__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(22, 32, 46, 0.75);
+}
+.pt-calc__label strong {
+  font-size: 1.4rem;
+  color: var(--ledger, #0e6b52);
+}
+
+.pt-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  margin: 0.7rem 0 0.3rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--ledger, #0e6b52) var(--pt-pct, 10%),
+    rgba(14, 107, 82, 0.15) var(--pt-pct, 10%)
+  );
+  cursor: pointer;
+}
+.pt-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid var(--ledger, #0e6b52);
+  box-shadow: 0 3px 10px rgba(14, 107, 82, 0.3);
+  transition: transform 0.15s ease;
+}
+.pt-range::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+.pt-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid var(--ledger, #0e6b52);
+  box-shadow: 0 3px 10px rgba(14, 107, 82, 0.3);
+}
+.pt-calc__ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: rgba(22, 32, 46, 0.5);
+}
+
+.pt-calc__out {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.9rem;
+  margin: 1.4rem 0 0.9rem;
+}
+.pt-calc__out > div {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: var(--wash, #eef5f1);
+}
+.pt-calc__out span {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(22, 32, 46, 0.62);
+}
+.pt-calc__out strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.55rem;
+  line-height: 1.15;
+  color: var(--ledger, #0e6b52);
+  font-variant-numeric: tabular-nums;
+}
+.pt-calc__note {
+  margin: 0;
+  font-size: 0.78rem;
+  color: rgba(22, 32, 46, 0.55);
+}
+
+.pt-get ul {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.pt-get li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.94rem;
+  opacity: 0;
+  animation: pt-rise 0.5s ease forwards;
+}
+.pt-get li span {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.pt-get li span svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .pt-hero__grid,
+  .pt-calc {
+    grid-template-columns: 1fr;
+  }
+  .pt-regions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pt-stories {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .pt-story {
+    grid-template-columns: 1fr;
+  }
+  .pt-story__body {
+    margin: -14px 0 0;
+    padding: 2rem 1.2rem 1.3rem;
+    border-radius: 0 0 16px 16px;
+    border-left: 1px solid rgba(14, 107, 82, 0.13);
+    border-top: 0;
+  }
+  .pt-step__no {
+    font-size: 2.8rem;
+  }
+}
+
+/* keeps the eyebrow on its own line instead of hugging the heading */
+.pt-eyebrow {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* ==========================================================================
+   4. PRODUCT CONFIDENCE CARDS  (the screenshot design)
+   ========================================================================== */
+.pt-product {
+  background: linear-gradient(180deg, #fff 0%, var(--wash, #eef5f1) 100%);
+}
+
+/* small rounded pill above the heading */
+.pt-pill {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.42rem 1.1rem;
+  border-radius: 999px;
+  background: var(--pt-accent-soft);
+  color: var(--pt-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pt-product__h2 {
+  margin-top: 0;
+}
+
+/* highlighted second half of the heading, with the underline */
+.pt-mark {
+  position: relative;
+  display: inline-block;
+  color: var(--pt-accent);
+  padding-bottom: 0.3rem;
+  white-space: nowrap;
+}
+.pt-mark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--pt-accent);
+  transform-origin: left;
+  animation: pt-grow 0.6s ease 0.15s both;
+}
+
+.pt-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.1rem;
+  margin-top: 2.6rem;
+}
+.pt-card {
+  height: 100%;
+  padding: 1.1rem 1.1rem 1.4rem;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(22, 32, 46, 0.1);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.pt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(14, 107, 82, 0.12);
+}
+.pt-card__shot {
+  padding: 0.9rem;
+  margin-bottom: 1.2rem;
+  border-radius: 14px;
+  background: var(--wash, #eef5f1);
+}
+.pt-card__shot .pt-art,
+.pt-card__shot .pt-shot,
+.pt-card__shot .pt-shot__img {
+  display: block;
+  width: 100%;
+}
+.pt-card__shot .pt-shot {
+  min-height: 130px;
+}
+.pt-cardart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.pt-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.02rem;
+}
+.pt-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(22, 32, 46, 0.68);
+}
+.pt-cards__cta {
+  margin-top: 2.4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-mark::after {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   FOUR-ACROSS CARD GRID  (.pt-quad + .pt-qcard)
+   --------------------------------------------------------------------------
+   The shared .fgrid uses auto-fit, which wrapped these four cards as 3 + 1.
+   This grid pins them to one row on desktop, two per row on tablet and one
+   on phones, and the cards are more compact so four fit comfortably.
+   ========================================================================== */
+.pt-quad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 2.4rem;
+  align-items: stretch;
+}
+
+/* Reveal wraps each card, so the wrapper has to stretch too */
+.pt-quad > * {
+  display: flex;
+  height: 100%;
+}
+
+.pt-qcard {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.1rem 1.2rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(22, 32, 46, 0.1);
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+/* the accent bar across the top, which slides in on hover */
+.pt-qcard__bar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pt-accent), var(--marigold, #f2a20c));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.pt-qcard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(14, 107, 82, 0.25);
+  box-shadow: 0 18px 36px rgba(14, 107, 82, 0.13);
+}
+.pt-qcard:hover .pt-qcard__bar {
+  transform: scaleX(1);
+}
+
+.pt-qcard__icon {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  margin-bottom: 0.85rem;
+  border-radius: 12px;
+  background: var(--pt-accent-soft);
+  color: var(--pt-accent);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.pt-qcard__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.pt-qcard:hover .pt-qcard__icon {
+  transform: translateY(-2px) rotate(-6deg) scale(1.06);
+  background: var(--pt-accent);
+  color: #fff;
+}
+
+.pt-qcard h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+.pt-qcard p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: rgba(22, 32, 46, 0.68);
+}
+
+/* faint number watermark, used on the "Why Become a Partner" cards */
+.pt-qcard--num::after {
+  content: attr(data-num);
+  position: absolute;
+  right: 0.7rem;
+  bottom: -0.55rem;
+  font-size: 3.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(14, 107, 82, 0.07);
+  pointer-events: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+.pt-qcard--num:hover::after {
+  color: rgba(14, 107, 82, 0.13);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 1040px) {
+  .pt-quad {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .pt-quad {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pt-qcard,
+  .pt-qcard__bar,
+  .pt-qcard__icon,
+  .pt-qcard--num::after {
+    transition: none;
+  }
+}

@@ -1,0 +1,36 @@
+// ===========================================================================
+// SECTION 2  -  "Which Kind of Partner Are You?"
+// 4 cards: CA, Software Reseller, Retail Store, Hardware Store
+// IMAGE: koi nahi (icons)
+// ===========================================================================
+
+import Reveal from "@/components/Reveal";
+import MenuIcon from "@/components/MenuIcon";
+
+export default function WhichKindOfPartnerAreYou({ types }) {
+  return (
+    <section className="section">
+      <div className="wrap">
+        <Reveal className="center">
+          <span className="eyebrow">{types.eyebrow}</span>
+          <h2>{types.h2}</h2>
+          <p className="lead">{types.lead}</p>
+        </Reveal>
+
+        <div className="fgrid">
+          {types.items.map(([t, d, icon], i) => (
+            <Reveal key={t} delay={i * 90}>
+              <article className="fcard pt-lift">
+                <span className="fcard__icon">
+                  <MenuIcon name={icon} />
+                </span>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

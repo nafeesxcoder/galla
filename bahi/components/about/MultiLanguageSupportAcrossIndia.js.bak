@@ -1,0 +1,34 @@
+// ===========================================================================
+// SECTION 12  -  "Multi-Language Support Across India"
+// Language chips: हिंदी, English, தமிழ் ...
+// IMAGE: content.js -> languages.img
+// ===========================================================================
+
+import Reveal from "@/components/Reveal";
+import Shot from "./Shot";
+
+export default function MultiLanguageSupportAcrossIndia({ languages }) {
+  return (
+    <section className="section">
+      <div className="wrap artsplit">
+        <Reveal>
+          <span className="eyebrow">{languages.eyebrow}</span>
+          <h2>{languages.h2}</h2>
+          <p className="lead">{languages.lead}</p>
+
+          <div className="ab-langs">
+            {languages.list.map((l) => (
+              <span key={l}>{l}</span>
+            ))}
+          </div>
+
+          <p className="featblock__note">{languages.note}</p>
+        </Reveal>
+
+        <Reveal className="artsplit__art" delay={140}>
+          <Shot src={languages.img} label={languages.imgLabel} alt={languages.h2} />
+        </Reveal>
+      </div>
+    </section>
+  );
+}

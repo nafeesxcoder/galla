@@ -1,42 +1,30 @@
-﻿import { pageMeta } from "@/lib/seo";
-import PartnerForm from "./PartnerForm";
+import PartnerPage, { partnerMeta, partnerFaqs } from "@/components/partner/Page";
+import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Partner with us",
-  description:
-    "Earn recurring commission as a reseller, CA or referral partner. Free demo account and training included.",
+  title: partnerMeta.title,
+  description: partnerMeta.description,
   path: "/partner",
 });
 
-export default function Partner() {
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: partnerFaqs.map(([q, a]) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
+export default function Page() {
   return (
     <>
-      <section className="page-head">
-        <div className="wrap">
-          <h1>Become a partner and earn on every sale</h1>
-          <p className="lead">A recurring commission program for resellers, CAs and tax consultants.</p>
-        </div>
-      </section>
-      <section className="section">
-        <div className="wrap split" style={{ alignItems: "start" }}>
-          <div>
-            <h2>What partners get</h2>
-            <ul className="checklist">
-              <li>Up to 30% commission on every license</li>
-              <li>Recurring income on renewals</li>
-              <li>Free demo account and training</li>
-              <li>A dedicated partner manager</li>
-            </ul>
-            <ol className="steps" style={{ gridTemplateColumns: "1fr", gap: "1.2rem" }}>
-              <li><h3>Fill in the form</h3></li>
-              <li><h3>Get a call and training from our team</h3></li>
-              <li><h3>Onboard customers and earn commission</h3></li>
-            </ol>
-          </div>
-          <div className="panel"><PartnerForm /></div>
-        </div>
-      </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <PartnerPage />
     </>
   );
 }
-

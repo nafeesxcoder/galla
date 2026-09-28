@@ -1,0 +1,521 @@
+// ===========================================================================
+// DESKTOP PAGE ARTWORK
+// ---------------------------------------------------------------------------
+// Ye saari drawings code se bani hain (SVG), photo nahi. Site ke hi colour
+// tokens use karti hain isliye theme se match karti hain aur har screen par
+// saaf dikhti hain.
+//
+// content.js me har jagah  art: "..."  likha hai. Wahi naam yahan se drawing
+// uthata hai. Poori list sabse neeche Art() me hai.
+//
+// Asli screenshot lagana ho to content.js me us jagah ka  img: "/x.png"
+// bhar do - drawing apne aap hat jayegi.
+// ===========================================================================
+
+/* --- chhote helper ---------------------------------------------------- */
+
+// Monitor ka frame. Andar jo bhi children do, screen par aa jaate hain.
+function Monitor({ children }) {
+  return (
+    <>
+      <rect x="54" y="34" width="266" height="172" rx="12" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="68" y="48" width="238" height="144" rx="6" fill="var(--wash)" />
+      <path d="M160 206h54v22h-54z" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <path d="M124 232h126" stroke="var(--ink)" strokeWidth="6" strokeLinecap="round" />
+      <g>{children}</g>
+    </>
+  );
+}
+
+function Lines({ x, y, widths, gap = 18, color = "var(--ledger)", w = 6 }) {
+  return (
+    <g stroke={color} strokeWidth={w} strokeLinecap="round">
+      {widths.map((len, i) => (
+        <path key={i} d={`M${x} ${y + i * gap}h${len}`} />
+      ))}
+    </g>
+  );
+}
+
+/* --- 1. Desktop app (hero) -------------------------------------------- */
+export function PcArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Galla billing app on a computer">
+      <circle className="art__blob" cx="356" cy="64" r="52" fill="var(--wash)" />
+      <Monitor>
+        <rect x="68" y="48" width="238" height="26" rx="6" fill="var(--ledger)" />
+        <circle cx="82" cy="61" r="4" fill="#fff" opacity=".8" />
+        <circle cx="95" cy="61" r="4" fill="#fff" opacity=".5" />
+        <rect x="80" y="86" width="60" height="94" rx="6" fill="#fff" />
+        <Lines x={90} y={100} widths={[38, 30, 38, 26]} gap={16} w={5} color="var(--ink)" />
+        <rect x="150" y="86" width="146" height="94" rx="6" fill="#fff" />
+        <Lines x={162} y={102} widths={[84, 110, 70]} gap={20} />
+        <rect x="162" y="158" width="66" height="14" rx="7" fill="var(--marigold)" />
+      </Monitor>
+      <g className="art__float">
+        <circle cx="336" cy="176" r="30" fill="var(--ledger)" />
+        <path d="M323 176l8 9 17-18" fill="none" stroke="#fff" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+      <circle className="art__pulse" cx="336" cy="176" r="11" fill="var(--marigold)" />
+    </svg>
+  );
+}
+
+/* --- 2. Tax invoice ---------------------------------------------------- */
+export function InvoiceArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="A GST tax invoice">
+      <circle className="art__blob" cx="342" cy="72" r="50" fill="var(--wash)" />
+      <rect x="92" y="26" width="222" height="248" rx="12" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="92" y="26" width="222" height="46" rx="12" fill="var(--ledger)" />
+      <rect x="110" y="42" width="72" height="8" rx="4" fill="#fff" opacity=".9" />
+      <rect x="110" y="56" width="44" height="6" rx="3" fill="#fff" opacity=".55" />
+      <rect x="258" y="42" width="38" height="20" rx="6" fill="var(--marigold)" />
+      <g stroke="var(--wash)" strokeWidth="2">
+        <path d="M110 104h190M110 134h190M110 164h190" />
+      </g>
+      <Lines x={110} y={94} widths={[84, 100, 68]} gap={30} w={7} color="var(--ink)" />
+      <Lines x={246} y={94} widths={[54, 54, 54]} gap={30} w={7} />
+      <rect x="180" y="188" width="122" height="66" rx="8" fill="var(--wash)" />
+      <Lines x={192} y={204} widths={[52, 66]} gap={18} w={6} color="var(--ink)" />
+      <rect x="192" y="232" width="78" height="10" rx="5" fill="var(--ledger)" />
+      <g className="art__float">
+        <rect x="100" y="196" width="66" height="58" rx="8" fill="var(--ledger)" opacity=".1" />
+        <text x="133" y="222" textAnchor="middle" fill="var(--ledger)" fontSize="16" fontWeight="700" fontFamily="system-ui, sans-serif">
+          GST
+        </text>
+        <text x="133" y="242" textAnchor="middle" fill="var(--ledger)" fontSize="11" fontFamily="system-ui, sans-serif">
+          HSN
+        </text>
+      </g>
+    </svg>
+  );
+}
+
+/* --- 3. Quick sale / POS ---------------------------------------------- */
+export function PosArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Fast billing at the counter">
+      <circle className="art__blob" cx="72" cy="74" r="50" fill="var(--wash)" />
+      <Monitor>
+        <rect x="80" y="60" width="160" height="30" rx="6" fill="#fff" />
+        <Lines x={92} y={75} widths={[92]} gap={0} w={6} color="var(--ink)" />
+        <rect x="250" y="60" width="46" height="30" rx="6" fill="var(--marigold)" />
+        <g fill="#fff">
+          <rect x="80" y="100" width="216" height="22" rx="5" />
+          <rect x="80" y="128" width="216" height="22" rx="5" />
+          <rect x="80" y="156" width="216" height="22" rx="5" />
+        </g>
+        <Lines x={92} y={111} widths={[74]} gap={28} w={5} color="var(--ink)" />
+        <Lines x={92} y={139} widths={[96]} gap={28} w={5} color="var(--ink)" />
+        <Lines x={92} y={167} widths={[60]} gap={28} w={5} color="var(--ink)" />
+        <Lines x={230} y={111} widths={[54, 54, 54]} gap={28} w={5} />
+      </Monitor>
+      <g className="art__float">
+        <rect x="286" y="168" width="94" height="52" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+        <g stroke="var(--ink)" strokeWidth="4" strokeLinecap="round">
+          <path d="M300 182v24M310 182v24M318 182v24M328 182v24M338 182v24M348 182v24M358 182v24" />
+        </g>
+        <path d="M290 194h100" stroke="var(--marigold)" strokeWidth="4" strokeLinecap="round" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 4. Invoice themes ------------------------------------------------- */
+export function ThemesArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Choose your invoice design">
+      <circle className="art__blob" cx="348" cy="66" r="48" fill="var(--wash)" />
+      {[
+        [68, 62, "#fff", "var(--ink)"],
+        [156, 46, "#fff", "var(--ink)"],
+      ].map(([x, y], i) => (
+        <g key={i} opacity={i === 0 ? 0.6 : 0.85}>
+          <rect x={x} y={y} width="118" height="170" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+          <rect x={x} y={y} width="118" height="28" rx="10" fill="var(--wash)" />
+          <Lines x={x + 14} y={y + 50} widths={[74, 90, 58]} gap={18} w={5} color="var(--ink)" />
+        </g>
+      ))}
+      <g className="art__float">
+        <rect x="244" y="30" width="126" height="182" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+        <rect x="244" y="30" width="126" height="32" rx="10" fill="var(--ledger)" />
+        <rect x="258" y="42" width="48" height="8" rx="4" fill="#fff" opacity=".9" />
+        <Lines x={258} y={82} widths={[84, 98, 64, 84]} gap={20} w={5} />
+        <rect x="258" y="176" width="66" height="12" rx="6" fill="var(--marigold)" />
+      </g>
+      <circle className="art__pulse" cx="358" cy="204" r="14" fill="var(--marigold)" opacity=".35" />
+      <g className="art__float">
+        <circle cx="358" cy="204" r="22" fill="var(--ledger)" />
+        <path d="M348 204l7 8 14-15" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 5. Payment modes -------------------------------------------------- */
+export function PaymentsArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Cash, UPI, card and bank payments">
+      <circle className="art__blob" cx="70" cy="70" r="50" fill="var(--wash)" />
+      <rect x="78" y="58" width="150" height="94" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="78" y="80" width="150" height="20" fill="var(--ledger)" />
+      <rect x="94" y="118" width="58" height="10" rx="5" fill="var(--ink)" opacity=".3" />
+      <rect x="192" y="116" width="24" height="16" rx="4" fill="var(--marigold)" />
+      <rect x="196" y="120" width="34" height="8" rx="4" fill="var(--wash)" />
+      <g className="art__float">
+        <rect x="196" y="120" width="146" height="128" rx="14" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+        <rect x="212" y="140" width="114" height="34" rx="8" fill="var(--wash)" />
+        <text x="228" y="163" fill="var(--ledger)" fontSize="17" fontWeight="700" fontFamily="system-ui, sans-serif">
+          UPI
+        </text>
+        <rect x="212" y="186" width="52" height="24" rx="6" fill="var(--ledger)" opacity=".15" />
+        <rect x="274" y="186" width="52" height="24" rx="6" fill="var(--ledger)" opacity=".15" />
+        <rect x="212" y="220" width="114" height="14" rx="7" fill="var(--marigold)" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 6. Windows PC ----------------------------------------------------- */
+export function WindowsArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Galla running on a Windows PC">
+      <circle className="art__blob" cx="348" cy="70" r="50" fill="var(--wash)" />
+      <Monitor>
+        <rect x="68" y="48" width="238" height="22" rx="6" fill="var(--ledger)" />
+        <g fill="#fff" opacity=".8">
+          <rect x="266" y="56" width="8" height="6" rx="1" />
+          <rect x="280" y="56" width="8" height="6" rx="1" />
+          <rect x="294" y="56" width="8" height="6" rx="1" />
+        </g>
+        <g fill="#fff" stroke="var(--ink)" strokeWidth="2">
+          <rect x="88" y="86" width="94" height="42" rx="6" />
+          <rect x="192" y="86" width="94" height="42" rx="6" />
+          <rect x="88" y="136" width="94" height="42" rx="6" />
+          <rect x="192" y="136" width="94" height="42" rx="6" />
+        </g>
+        <g fill="var(--ledger)" opacity=".4">
+          <rect x="100" y="104" width="40" height="7" rx="3.5" />
+          <rect x="204" y="104" width="40" height="7" rx="3.5" />
+          <rect x="100" y="154" width="40" height="7" rx="3.5" />
+          <rect x="204" y="154" width="40" height="7" rx="3.5" />
+        </g>
+      </Monitor>
+      <g className="art__float">
+        <rect x="292" y="150" width="86" height="86" rx="10" fill="var(--ledger)" />
+        <g stroke="#fff" strokeWidth="4" strokeLinecap="round">
+          <path d="M316 176h38M316 193h38M316 210h24" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+/* --- 7. Mac laptop ----------------------------------------------------- */
+export function MacArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Galla running on a Mac">
+      <circle className="art__blob" cx="70" cy="76" r="50" fill="var(--wash)" />
+      <rect x="86" y="58" width="248" height="152" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="100" y="72" width="220" height="124" rx="5" fill="var(--wash)" />
+      <rect x="100" y="72" width="220" height="20" rx="5" fill="var(--ledger)" opacity=".85" />
+      <circle cx="112" cy="82" r="3.5" fill="#fff" opacity=".85" />
+      <circle cx="123" cy="82" r="3.5" fill="#fff" opacity=".55" />
+      <circle cx="134" cy="82" r="3.5" fill="#fff" opacity=".4" />
+      <rect x="114" y="106" width="86" height="74" rx="6" fill="#fff" />
+      <Lines x={126} y={122} widths={[58, 44, 58]} gap={18} w={5} color="var(--ink)" />
+      <rect x="212" y="106" width="94" height="74" rx="6" fill="#fff" />
+      <g fill="var(--ledger)">
+        <rect x="226" y="146" width="14" height="24" rx="4" />
+        <rect x="248" y="130" width="14" height="40" rx="4" />
+        <rect x="270" y="138" width="14" height="32" rx="4" />
+      </g>
+      <rect x="292" y="120" width="14" height="50" rx="4" fill="var(--marigold)" />
+      <path d="M62 210h296l16 26H46z" fill="#fff" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="round" />
+      <path d="M186 222h48" stroke="var(--ink)" strokeWidth="4" strokeLinecap="round" opacity=".4" />
+    </svg>
+  );
+}
+
+/* --- 8. Printer -------------------------------------------------------- */
+export function PrinterArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Regular and thermal printer support">
+      <circle className="art__blob" cx="342" cy="72" r="48" fill="var(--wash)" />
+      <rect x="92" y="130" width="176" height="80" rx="12" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="108" y="150" width="40" height="12" rx="6" fill="var(--ledger)" opacity=".35" />
+      <circle cx="240" cy="156" r="7" fill="var(--marigold)" />
+      <rect x="108" y="180" width="144" height="14" rx="7" fill="var(--wash)" />
+      <g className="art__float">
+        <path d="M124 130V46h112v84z" fill="#fff" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="round" />
+        <Lines x={140} y={68} widths={[64, 80, 52]} gap={18} w={5} color="var(--ink)" />
+      </g>
+      <path d="M124 210h112v52l-18-12-20 12-18-12-20 12-18-12z" fill="#fff" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="round" />
+      <Lines x={140} y={228} widths={[56, 40]} gap={16} w={4} color="var(--ink)" />
+      <g className="art__float">
+        <rect x="286" y="150" width="86" height="96" rx="10" fill="var(--ledger)" />
+        <g stroke="#fff" strokeWidth="4" strokeLinecap="round">
+          <path d="M302 176v44M314 176v44M324 176v44M336 176v44M348 176v44M358 176v44" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+/* --- 9. Reports -------------------------------------------------------- */
+export function ReportArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Business reports">
+      <circle className="art__blob" cx="70" cy="70" r="48" fill="var(--wash)" />
+      <rect x="62" y="48" width="292" height="200" rx="12" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="62" y="48" width="292" height="38" rx="12" fill="var(--wash)" />
+      <rect x="82" y="62" width="76" height="9" rx="4.5" fill="var(--ink)" opacity=".55" />
+      <g stroke="var(--wash)" strokeWidth="2">
+        <path d="M92 212h250M92 176h250M92 140h250" />
+      </g>
+      <g fill="var(--ledger)">
+        <rect x="108" y="150" width="26" height="62" rx="5" />
+        <rect x="154" y="124" width="26" height="88" rx="5" />
+        <rect x="246" y="136" width="26" height="76" rx="5" />
+      </g>
+      <rect x="200" y="106" width="26" height="106" rx="5" fill="var(--marigold)" />
+      <rect x="292" y="160" width="26" height="52" rx="5" fill="var(--ledger)" opacity=".45" />
+      <path d="M92 218h250" stroke="var(--ink)" strokeWidth="3" strokeLinecap="round" />
+      <g className="art__float">
+        <path d="M106 188l48-34 46 22 48-40 46 20" fill="none" stroke="var(--ink)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="6 6" />
+        <circle cx="294" cy="156" r="8" fill="var(--ink)" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 10. Custom fields -------------------------------------------------- */
+export function FieldsArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Add your own fields">
+      <circle className="art__blob" cx="346" cy="68" r="48" fill="var(--wash)" />
+      <rect x="92" y="40" width="216" height="220" rx="12" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      {[70, 116, 162].map((y) => (
+        <g key={y}>
+          <rect x="112" y={y} width="62" height="8" rx="4" fill="var(--ink)" opacity=".45" />
+          <rect x="112" y={y + 16} width="176" height="22" rx="6" fill="var(--wash)" />
+        </g>
+      ))}
+      <g className="art__float">
+        <rect x="112" y="208" width="176" height="26" rx="8" fill="#fff" stroke="var(--marigold)" strokeWidth="3" strokeDasharray="7 6" />
+        <path d="M196 214v14M189 221h14" stroke="var(--marigold)" strokeWidth="4" strokeLinecap="round" />
+      </g>
+      <circle className="art__pulse" cx="200" cy="221" r="16" fill="var(--marigold)" opacity=".28" />
+    </svg>
+  );
+}
+
+/* --- 11. Multi-device sync ---------------------------------------------- */
+export function SyncArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Computer and phone in sync">
+      <circle className="art__blob" cx="76" cy="68" r="50" fill="var(--wash)" />
+      <rect x="46" y="76" width="212" height="132" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="60" y="90" width="184" height="104" rx="5" fill="var(--wash)" />
+      <Lines x={78} y={114} widths={[86, 122, 64]} gap={22} />
+      <path d="M28 208h248l14 22H14z" fill="#fff" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="round" />
+      <rect x="294" y="94" width="84" height="150" rx="14" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="304" y="110" width="64" height="112" rx="6" fill="var(--wash)" />
+      <Lines x={316} y={130} widths={[40, 30, 40]} gap={18} w={5} />
+      <rect x="316" y="186" width="40" height="18" rx="9" fill="var(--marigold)" />
+      <g className="art__float">
+        <path d="M262 130c22-14 22 38 0 24" fill="none" stroke="var(--ledger)" strokeWidth="4" strokeLinecap="round" strokeDasharray="7 7" />
+        <circle cx="280" cy="142" r="13" fill="var(--ledger)" />
+        <path d="M274 142l4 5 8-9" fill="none" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 12. WhatsApp sharing ----------------------------------------------- */
+export function WhatsappArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Send the bill on WhatsApp">
+      <circle className="art__blob" cx="76" cy="70" r="48" fill="var(--wash)" />
+      <rect x="140" y="26" width="140" height="248" rx="18" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="152" y="50" width="116" height="200" rx="8" fill="var(--wash)" />
+      <rect x="182" y="35" width="56" height="6" rx="3" fill="var(--ink)" opacity=".3" />
+      <g>
+        <rect x="162" y="66" width="80" height="34" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="2.5" />
+        <Lines x={174} y={78} widths={[50, 36]} gap={14} w={4} color="var(--ink)" />
+      </g>
+      <g>
+        <rect x="178" y="112" width="80" height="34" rx="10" fill="var(--ledger)" />
+        <Lines x={190} y={124} widths={[50, 36]} gap={14} w={4} color="#fff" />
+      </g>
+      <g className="art__float">
+        <rect x="166" y="158" width="92" height="76" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="2.5" />
+        <rect x="166" y="158" width="92" height="20" rx="10" fill="var(--ledger)" />
+        <Lines x={178} y={192} widths={[56, 68, 40]} gap={14} w={4} color="var(--ink)" />
+      </g>
+      <g className="art__float">
+        <circle cx="322" cy="172" r="30" fill="var(--marigold)" />
+        <path d="M310 168l24-10-10 24-4-10z" fill="#fff" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 13. Cash and bank -------------------------------------------------- */
+export function CashArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Cash and bank balance">
+      <circle className="art__blob" cx="344" cy="70" r="48" fill="var(--wash)" />
+      <rect x="70" y="92" width="150" height="96" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="70" y="116" width="150" height="22" fill="var(--ledger)" opacity=".2" />
+      <circle cx="145" cy="152" r="18" fill="var(--marigold)" opacity=".4" />
+      <text x="145" y="159" textAnchor="middle" fill="var(--ledger)" fontSize="20" fontWeight="700" fontFamily="system-ui, sans-serif">
+        ₹
+      </text>
+      <g className="art__float">
+        <path d="M236 122h122l-61-40z" fill="#fff" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="round" />
+        <rect x="236" y="122" width="122" height="12" rx="4" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+        <g fill="#fff" stroke="var(--ink)" strokeWidth="3">
+          <rect x="250" y="140" width="16" height="62" />
+          <rect x="280" y="140" width="16" height="62" />
+          <rect x="310" y="140" width="16" height="62" />
+          <rect x="336" y="140" width="16" height="62" />
+        </g>
+        <rect x="236" y="204" width="122" height="14" rx="5" fill="var(--ledger)" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 14. Stock ---------------------------------------------------------- */
+export function StockArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Stock updated automatically">
+      <circle className="art__blob" cx="78" cy="70" r="48" fill="var(--wash)" />
+      <g stroke="var(--ink)" strokeWidth="3" fill="#fff">
+        <rect x="66" y="96" width="280" height="64" rx="6" />
+        <rect x="66" y="176" width="280" height="64" rx="6" />
+      </g>
+      <g fill="var(--wash)" stroke="var(--ink)" strokeWidth="2.5">
+        <rect x="82" y="112" width="44" height="32" rx="4" />
+        <rect x="136" y="112" width="44" height="32" rx="4" />
+        <rect x="190" y="112" width="44" height="32" rx="4" />
+        <rect x="82" y="192" width="44" height="32" rx="4" />
+        <rect x="136" y="192" width="44" height="32" rx="4" />
+      </g>
+      <rect x="190" y="192" width="44" height="32" rx="4" fill="var(--marigold)" opacity=".3" stroke="var(--marigold)" strokeWidth="2.5" />
+      <Lines x={258} y={128} widths={[58]} gap={0} w={5} />
+      <Lines x={258} y={208} widths={[34]} gap={0} w={5} />
+      <g className="art__float">
+        <rect x="272" y="176" width="74" height="30" rx="15" fill="var(--marigold)" />
+        <path d="M288 191h4M298 191h4M308 191h4" stroke="#fff" strokeWidth="4" strokeLinecap="round" />
+        <path d="M326 184v8M326 197v.1" stroke="#fff" strokeWidth="4" strokeLinecap="round" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 15. Orders --------------------------------------------------------- */
+export function OrdersArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Orders from booking to delivery">
+      <circle className="art__blob" cx="346" cy="66" r="48" fill="var(--wash)" />
+      <path d="M78 196h264" stroke="var(--wash)" strokeWidth="14" strokeLinecap="round" />
+      {[
+        [78, "var(--ledger)"],
+        [166, "var(--ledger)"],
+        [254, "var(--marigold)"],
+        [342, "var(--ledger)"],
+      ].map(([cx, fill], i) => (
+        <g key={i}>
+          <circle cx={cx} cy="196" r="20" fill={fill} opacity={i === 3 ? 0.25 : 1} />
+          {i !== 3 && (
+            <path d={`M${cx - 8} 196l6 7 11-13`} fill="none" stroke="#fff" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round" />
+          )}
+        </g>
+      ))}
+      <g className="art__float">
+        <rect x="140" y="44" width="150" height="110" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+        <rect x="140" y="44" width="150" height="26" rx="10" fill="var(--ledger)" />
+        <Lines x={158} y={94} widths={[86, 108, 64]} gap={20} w={5} color="var(--ink)" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 16. Demo video ----------------------------------------------------- */
+export function PlayArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Watch the demo">
+      <circle className="art__blob" cx="352" cy="62" r="46" fill="var(--wash)" />
+      <Monitor>
+        <rect x="68" y="48" width="238" height="144" rx="6" fill="var(--ledger)" opacity=".12" />
+        <Lines x={86} y={70} widths={[70]} gap={0} w={6} color="var(--ink)" />
+      </Monitor>
+      <circle className="art__pulse" cx="187" cy="124" r="44" fill="var(--marigold)" opacity=".3" />
+      <g className="art__float">
+        <circle cx="187" cy="124" r="34" fill="var(--ledger)" />
+        <path d="M178 110l22 14-22 14z" fill="#fff" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- 17. Avatar (asli photo aane tak) ------------------------------------ */
+export function AvatarArt({ initial = "G" }) {
+  return (
+    <svg className="art dk-avatar" viewBox="0 0 200 200" role="img" aria-label="Customer">
+      <circle cx="100" cy="100" r="92" fill="var(--wash)" />
+      <circle cx="100" cy="82" r="34" fill="var(--ledger)" opacity=".2" />
+      <path d="M40 176c8-34 30-50 60-50s52 16 60 50z" fill="var(--ledger)" opacity=".2" />
+      <text x="100" y="118" textAnchor="middle" fill="var(--ledger)" fontSize="72" fontWeight="700" fontFamily="system-ui, sans-serif">
+        {initial}
+      </text>
+    </svg>
+  );
+}
+
+/* ===========================================================================
+   content.js me  art: "..."  me ye naam daal sakte ho
+   =========================================================================== */
+export default function Art({ name, initial }) {
+  switch (name) {
+    case "pc":
+      return <PcArt />;
+    case "invoice":
+      return <InvoiceArt />;
+    case "pos":
+      return <PosArt />;
+    case "themes":
+      return <ThemesArt />;
+    case "payments":
+      return <PaymentsArt />;
+    case "windows":
+      return <WindowsArt />;
+    case "mac":
+      return <MacArt />;
+    case "printer":
+      return <PrinterArt />;
+    case "report":
+      return <ReportArt />;
+    case "fields":
+      return <FieldsArt />;
+    case "sync":
+      return <SyncArt />;
+    case "whatsapp":
+      return <WhatsappArt />;
+    case "cash":
+      return <CashArt />;
+    case "stock":
+      return <StockArt />;
+    case "orders":
+      return <OrdersArt />;
+    case "play":
+      return <PlayArt />;
+    case "avatar":
+      return <AvatarArt initial={initial} />;
+    default:
+      return <PcArt />;
+  }
+}

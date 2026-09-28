@@ -1,0 +1,105 @@
+// ===========================================================================
+// PARTNER PAGE ARTWORK
+// ---------------------------------------------------------------------------
+// Code se bani SVG drawings. content.js me  art: "..."  se chunti hain.
+// Naam ki list sabse neeche Art() me hai.
+// Asli photo lagani ho to content.js me us jagah  img: "/x.png"  bhar do.
+// ===========================================================================
+
+/* --- CA partner dashboard --------------------------------------------- */
+export function CaArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Partner dashboard with earnings">
+      <circle className="art__blob" cx="350" cy="62" r="52" fill="var(--wash)" />
+
+      {/* laptop */}
+      <rect x="54" y="52" width="252" height="156" rx="10" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+      <rect x="68" y="66" width="224" height="128" rx="6" fill="var(--wash)" />
+      <rect x="68" y="66" width="224" height="22" rx="6" fill="var(--ledger)" />
+      <rect x="80" y="74" width="54" height="6" rx="3" fill="#fff" opacity=".85" />
+
+      {/* earnings card */}
+      <rect x="82" y="100" width="96" height="52" rx="8" fill="#fff" />
+      <rect x="94" y="112" width="34" height="6" rx="3" fill="var(--ink)" opacity=".35" />
+      <text x="94" y="140" fill="var(--ledger)" fontSize="20" fontWeight="700" fontFamily="system-ui, sans-serif">
+        ₹
+      </text>
+      <rect x="110" y="130" width="46" height="9" rx="4.5" fill="var(--ledger)" />
+
+      {/* mini chart */}
+      <rect x="190" y="100" width="90" height="76" rx="8" fill="#fff" />
+      <g fill="var(--ledger)">
+        <rect x="202" y="146" width="12" height="20" rx="3" />
+        <rect x="220" y="134" width="12" height="32" rx="3" />
+        <rect x="256" y="126" width="12" height="40" rx="3" />
+      </g>
+      <rect x="238" y="116" width="12" height="50" rx="3" fill="var(--marigold)" />
+
+      <rect x="82" y="160" width="96" height="16" rx="8" fill="var(--marigold)" opacity=".55" />
+      <path d="M34 208h292l16 26H18z" fill="#fff" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="round" />
+
+      <g className="art__float">
+        <circle cx="344" cy="176" r="32" fill="var(--ledger)" />
+        <path d="M344 160v32M334 172l10-10 10 10" fill="none" stroke="#fff" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+      <circle className="art__pulse" cx="344" cy="176" r="12" fill="var(--marigold)" />
+    </svg>
+  );
+}
+
+/* --- Handshake / network ---------------------------------------------- */
+export function NetworkArt() {
+  return (
+    <svg className="art" viewBox="0 0 420 300" role="img" aria-label="Your network, connected">
+      <circle className="art__blob" cx="72" cy="66" r="50" fill="var(--wash)" />
+      <g stroke="var(--ledger)" strokeWidth="3" strokeDasharray="7 7" fill="none" opacity=".55">
+        <path d="M210 150 96 78M210 150l114-72M210 150 96 226M210 150l114 76" />
+      </g>
+      {[
+        [96, 78],
+        [324, 78],
+        [96, 226],
+        [324, 226],
+      ].map(([cx, cy], i) => (
+        <g key={i}>
+          <circle cx={cx} cy={cy} r="28" fill="#fff" stroke="var(--ink)" strokeWidth="3" />
+          <circle cx={cx} cy={cy - 6} r="8" fill="var(--ledger)" opacity=".35" />
+          <path d={`M${cx - 13} ${cy + 16}c3-10 8-14 13-14s10 4 13 14z`} fill="var(--ledger)" opacity=".35" />
+        </g>
+      ))}
+      <circle className="art__pulse" cx="210" cy="150" r="54" fill="var(--marigold)" opacity=".22" />
+      <g className="art__float">
+        <circle cx="210" cy="150" r="42" fill="var(--ledger)" />
+        <path d="M194 150l10 11 22-23" fill="none" stroke="#fff" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    </svg>
+  );
+}
+
+/* --- Avatar (asli photo aane tak) ------------------------------------- */
+export function AvatarArt({ initial = "G" }) {
+  return (
+    <svg className="art pt-avatar" viewBox="0 0 200 200" role="img" aria-label="Partner">
+      <circle cx="100" cy="100" r="96" fill="#fff" opacity=".9" />
+      <circle cx="100" cy="82" r="34" fill="var(--ledger)" opacity=".25" />
+      <path d="M40 176c8-34 30-50 60-50s52 16 60 50z" fill="var(--ledger)" opacity=".25" />
+      <text x="100" y="118" textAnchor="middle" fill="var(--ledger)" fontSize="70" fontWeight="700" fontFamily="system-ui, sans-serif">
+        {initial}
+      </text>
+    </svg>
+  );
+}
+
+/* ======================================================================= */
+export default function Art({ name, initial }) {
+  switch (name) {
+    case "ca":
+      return <CaArt />;
+    case "network":
+      return <NetworkArt />;
+    case "avatar":
+      return <AvatarArt initial={initial} />;
+    default:
+      return <CaArt />;
+  }
+}
