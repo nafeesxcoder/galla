@@ -8,6 +8,7 @@
 
 "use client";
 import { useState } from "react";
+import { useAuth } from "@/components/account/AuthProvider";
 import { CONTENT } from "./content";
 import GallaMark from "./GallaMark";
 import PhoneStep from "./PhoneStep";
@@ -16,6 +17,7 @@ import EmailStep from "./EmailStep";
 
 export default function LoginCard({ onClose }) {
   const c = CONTENT;
+  const { signIn } = useAuth();
   const [step, setStep] = useState("phone"); // phone | otp | email
   const [phone, setPhone] = useState("");
   const [country, setCountry] = useState(c.countries[0].id);
@@ -59,10 +61,14 @@ export default function LoginCard({ onClose }) {
           phone={phone}
           onBack={() => setStep("phone")}
           onDone={() => {
-            // ---- WHAT HAPPENS AFTER A SUCCESSFUL LOGIN --------------------
-            // Once the backend exists, send them on to the dashboard here:
-            // window.location.href = "/app";
-            // ---------------------------------------------------------------
+            // The session starts here. Right now this only writes to the
+            // browser; AuthProvider is where you swap in the real API.
+            signIn({ phone, dial: picked.dial });
+
+            // Vyapar does NOT redirect after login - you stay on the page
+            // you were on and it becomes account-aware. We do the same.
+            // If you ever want to send someone on instead, read a ?next=
+            // parameter here and redirect to it.
             onClose?.();
           }}
         />

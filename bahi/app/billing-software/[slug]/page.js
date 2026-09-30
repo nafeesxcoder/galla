@@ -1,18 +1,17 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { INDUSTRIES, getIndustry } from "@/lib/industries";
+import { getIndustryContent } from "@/lib/industry-content";
 import { pageMeta } from "@/lib/seo";
 import { SITE } from "@/lib/site";
-import Reveal from "@/components/Reveal";
-import InvoiceMock from "@/components/InvoiceMock";
+import MenuIcon from "@/components/MenuIcon";
 import CtaBand from "@/components/CtaBand";
-import IndustryIcon from "@/components/industry/IndustryIcon";
-import SimpleFaq from "@/components/industry/SimpleFaq";
+import IndustryPage from "@/components/industry/Page";
 
 import PharmacyPage, { pharmacyMeta, pharmacyFaqs } from "@/components/pharmacy/Page";
 
-// Jis industry ka apna design ban chuka hai, use yahan add karo.
-// Naya page banao to: components/<slug>/Page.js  ->  yahan entry
+// An industry with its own designed page goes here.
+// To add one: build components/<slug>/Page.js, then add an entry below.
 const CUSTOM = {
   pharmacy: { Page: PharmacyPage, meta: pharmacyMeta, faqs: pharmacyFaqs },
 };
@@ -25,51 +24,75 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const ind = getIndustry(slug);
   if (!ind) return {};
+
   const custom = CUSTOM[slug];
   return pageMeta({
     title: `${custom?.meta?.title ?? ind.h1} | ${SITE.name}`,
-    description:
-      custom?.meta?.description ??
-      `${ind.intro} Free GST billing software for ${ind.name.toLowerCase()} businesses in India.`,
+    description: custom?.meta?.description ?? ind.intro,
     path: `/billing-software/${ind.slug}`,
   });
 }
 
-export default async function IndustryPage({ params }) {
+export default async function Page({ params }) {
   const { slug } = await params;
   const ind = getIndustry(slug);
   if (!ind) notFound();
 
   const custom = CUSTOM[slug];
-  const faqList = custom?.faqs ?? ind.faqs;
-  const others = INDUSTRIES.filter((i) => i.slug !== ind.slug).slice(0, 6);
+  const content = getIndustryContent(slug);
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqList.map(([q, a]) => ({
-      "@type": "Question",
-      name: q,
-      acceptedAnswer: { "@type": "Answer", text: a },
-    })),
-  };
+  // The FAQs Google is shown are the same ones on the page, so the two
+  // cannot drift apart.
+  const faqList = custom?.faqs ?? content?.faqs ?? [];
+  const ldJson = faqList.length ? (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqList.map(([q, a]) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }),
+      }}
+    />
+  ) : null;
 
+  // There is no /solutions landing page - the Solutions menu is a menu -
+  // so the breadcrumb goes straight back to the home page.
   const crumbs = (
     <nav className="crumbs wrap" aria-label="Breadcrumb">
       <Link href="/">Home</Link> <span aria-hidden="true">/</span>{" "}
-      <Link href="/solutions">Solutions</Link> <span aria-hidden="true">/</span>{" "}
       <span>{ind.name}</span>
     </nav>
   );
 
+  const others = INDUSTRIES.filter((i) => i.slug !== ind.slug).slice(0, 6);
   const otherTypes = (
     <section className="section section--wash">
       <div className="wrap">
         <h2>Other business types</h2>
-        <div className="otherlinks">
+        <p className="lead">
+          It is the same app underneath. These pages just show the parts each
+          trade leans on.
+        </p>
+        <div className="sw-others">
           {others.map((o) => (
-            <Link key={o.slug} href={`/billing-software/${o.slug}`}>
-              {o.name} billing &rarr;
+            <Link
+              key={o.slug}
+              href={`/billing-software/${o.slug}`}
+              className="sw-other"
+            >
+              <span className="sw-other__icon">
+                <MenuIcon name={o.icon} />
+              </span>
+              <span>
+                <strong>{o.name}</strong>
+                <em>{o.tagline}</em>
+              </span>
             </Link>
           ))}
         </div>
@@ -77,11 +100,7 @@ export default async function IndustryPage({ params }) {
     </section>
   );
 
-  const ldJson = (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-  );
-
-  // ---- Jis page ka apna design hai ----
+  // ---- industries with their own designed page ----
   if (custom) {
     const Custom = custom.Page;
     return (
@@ -92,68 +111,15 @@ export default async function IndustryPage({ params }) {
     );
   }
 
-  // ---- Baki pages (simple) ----
+  // ---- everything else, on the shared template ----
   return (
     <>
-      {crumbs}
-
-      <section className="hero">
-        <div className="wrap hero__grid">
-          <div>
-            <span className="pill">{ind.tagline}</span>
-            <h1>{ind.h1}</h1>
-            <p className="lead">{ind.intro}</p>
-            <div className="btn-row">
-              <Link href="/mobile-app" className="btn btn--primary">Start free</Link>
-              <Link href="/pricing" className="btn btn--ghost">See pricing</Link>
-            </div>
-          </div>
-          <InvoiceMock />
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="wrap">
-          <Reveal>
-            <span className="eyebrow">Built for this business</span>
-            <h2>What {ind.name.toLowerCase()} owners get</h2>
-          </Reveal>
-          <div className="fgrid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
-            {ind.features.map(([t, d], i) => (
-              <Reveal key={t} delay={(i % 3) * 80}>
-                <article className="fcard">
-                  <span className="fcard__icon"><IndustryIcon name={ind.icon} /></span>
-                  <h3>{t}</h3>
-                  <p>{d}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--wash">
-        <div className="wrap">
-          <Reveal>
-            <h2>Also included in every plan</h2>
-            <p className="lead">The same billing, stock and GST tools every {SITE.name} user gets.</p>
-          </Reveal>
-          <ul className="checklist checklist--2col">
-            <li>GST and non-GST invoices with HSN codes</li>
-            <li>WhatsApp bills and payment reminders</li>
-            <li>Stock tracking with low stock alerts</li>
-            <li>UPI QR code on every invoice</li>
-            <li>GSTR-1 and GSTR-3B ready reports</li>
-            <li>Works offline and syncs later</li>
-            <li>Thermal and A4 printer support</li>
-            <li>Automatic cloud backup</li>
-          </ul>
-        </div>
-      </section>
-
-      <SimpleFaq faqs={ind.faqs} title={`Questions from ${ind.name.toLowerCase()} owners`} />
-
-      {otherTypes}
+      <IndustryPage
+        ind={ind}
+        content={content}
+        crumbs={crumbs}
+        otherTypes={otherTypes}
+      />
       <CtaBand />
       {ldJson}
     </>

@@ -485,6 +485,39 @@ export const CONTENT = {
   // -------------------------------------------------------------------------
   // 13. FAQ  ->  FrequentlyAskedQuestions.js
   // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  // DOWNLOAD BAND  ->  DownloadForPc.js
+  // -------------------------------------------------------------------------
+  // TODO: the two links below are empty, so the buttons are hidden and the
+  //       "coming soon" line shows instead. Put your real installer URLs here
+  //       when you have them - a .exe for Windows and a .dmg for Mac.
+  //
+  //       Windows will warn people about an unsigned .exe ("Windows protected
+  //       your PC") until you buy a code signing certificate. Budget for that
+  //       before launch; it costs real money and it takes days to issue.
+  get: {
+    eyebrow: "Get it on your computer",
+    h2: "Download Galla for PC",
+    lead:
+      "The same account as the phone app, on a bigger screen and a real keyboard. Install it on as many of your own computers as your plan allows.",
+    windows: "",
+    windowsNote: "Windows 7 and above",
+    mac: "",
+    macNote: "macOS 11 and above",
+    soon:
+      "The desktop installer is not ready to download yet. Leave us your number on the contact page and we will tell you the day it is.",
+    facts: [
+      "Works offline - bills do not stop when the internet does",
+      "Syncs with the phone app on the same account",
+      "Free plan available, no card needed",
+    ],
+    phone: {
+      h3: "Also on your phone",
+      text: "Most owners bill on the counter PC and check the books on the phone. It is one account either way.",
+      cta: "See the mobile app",
+    },
+  },
+
   faqs: [
     [
       "What is billing software for a PC?",

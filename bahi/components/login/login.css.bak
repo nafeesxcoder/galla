@@ -1,0 +1,454 @@
+/* ==========================================================================
+   LOGIN POPUP CSS
+   Every class starts with "lg-" so nothing clashes with the other pages.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+@keyframes lg-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes lg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- the dark backdrop -------------------------------------------------- */
+.lg-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  background: rgba(22, 32, 46, 0.55);
+  backdrop-filter: blur(3px);
+  animation: lg-fade 0.18s ease;
+  overflow-y: auto;
+}
+
+/* ---- the card ----------------------------------------------------------- */
+.lg-card {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  padding: 2rem 1.9rem 1.6rem;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 30px 70px rgba(22, 32, 46, 0.3);
+  animation: lg-rise 0.24s ease;
+}
+
+/* on the /login page the card sits on its own, centred */
+.lg-page .lg-card {
+  margin: 0 auto;
+  border: 1px solid rgba(14, 107, 82, 0.14);
+  box-shadow: 0 18px 44px rgba(14, 107, 82, 0.1);
+  animation: none;
+}
+
+.lg-x {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(22, 32, 46, 0.45);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lg-x svg {
+  width: 100%;
+  height: 100%;
+}
+.lg-x:hover {
+  background: var(--wash, #eef5f1);
+  color: var(--ink, #16202e);
+}
+
+.lg-top {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.lg-mark {
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 0.8rem;
+}
+.lg-mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.lg-top h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.lg-sub {
+  margin: 0 0 1.2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(22, 32, 46, 0.65);
+}
+.lg-sub strong {
+  color: var(--ink, #16202e);
+  white-space: nowrap;
+}
+
+/* ---- fields ------------------------------------------------------------- */
+.lg-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(22, 32, 46, 0.75);
+}
+
+.lg-input,
+.lg-phone {
+  width: 100%;
+  border-radius: 11px;
+  border: 1.5px solid rgba(14, 107, 82, 0.22);
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.lg-input {
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--ink, #16202e);
+}
+.lg-input:focus {
+  outline: none;
+  border-color: var(--ledger, #0e6b52);
+  box-shadow: 0 0 0 3px rgba(14, 107, 82, 0.14);
+}
+
+.lg-phone {
+  display: flex;
+  align-items: stretch;
+  overflow: visible;
+}
+.lg-phone:focus-within {
+  border-color: var(--ledger, #0e6b52);
+  box-shadow: 0 0 0 3px rgba(14, 107, 82, 0.14);
+}
+.lg-phone__dial {
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink, #16202e);
+}
+.lg-phone input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem 0.9rem 0.75rem 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--ink, #16202e);
+}
+.lg-phone input:focus {
+  outline: none;
+}
+
+.lg-input.is-bad,
+.lg-phone.is-bad {
+  border-color: #c62828;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
+}
+
+/* ---- country selector --------------------------------------------------- */
+.lg-cc {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.lg-cc__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 100%;
+  padding: 0 0.6rem 0 0.75rem;
+  border: 0;
+  border-right: 1px solid rgba(14, 107, 82, 0.16);
+  margin-right: 0.6rem;
+  background: transparent;
+  cursor: pointer;
+}
+.lg-flag {
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  display: block;
+  box-shadow: 0 0 0 1px rgba(22, 32, 46, 0.12);
+}
+.lg-cc__caret {
+  width: 6px;
+  height: 6px;
+  border-right: 1.6px solid rgba(22, 32, 46, 0.5);
+  border-bottom: 1.6px solid rgba(22, 32, 46, 0.5);
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.lg-cc__menu {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.5rem);
+  left: -0.75rem;
+  width: max-content;
+  min-width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.15);
+  box-shadow: 0 14px 34px rgba(22, 32, 46, 0.18);
+}
+.lg-cc__menu button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--ink, #16202e);
+  text-align: left;
+  cursor: pointer;
+}
+.lg-cc__menu button:hover {
+  background: var(--wash, #eef5f1);
+}
+.lg-cc__menu button.is-on {
+  background: var(--wash, #eef5f1);
+  font-weight: 600;
+}
+.lg-cc__menu span {
+  flex: 1;
+}
+.lg-cc__menu em {
+  font-style: normal;
+  color: rgba(22, 32, 46, 0.55);
+}
+
+/* ---- OTP boxes ---------------------------------------------------------- */
+.lg-otp {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+.lg-otp input {
+  width: 100%;
+  padding: 0.7rem 0;
+  border-radius: 10px;
+  border: 1.5px solid rgba(14, 107, 82, 0.22);
+  background: #fff;
+  font: inherit;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink, #16202e);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.lg-otp input:focus {
+  outline: none;
+  border-color: var(--ledger, #0e6b52);
+  box-shadow: 0 0 0 3px rgba(14, 107, 82, 0.14);
+}
+.lg-otp input.is-bad {
+  border-color: #c62828;
+}
+
+/* ---- buttons ------------------------------------------------------------ */
+.lg-primary,
+.lg-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-top: 1.1rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease,
+    transform 0.16s ease;
+}
+.lg-primary {
+  border: 0;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.lg-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(14, 107, 82, 0.28);
+}
+.lg-primary:disabled {
+  background: rgba(22, 32, 46, 0.12);
+  color: rgba(22, 32, 46, 0.42);
+  cursor: not-allowed;
+}
+.lg-ghost {
+  margin-top: 0;
+  border: 1.5px solid rgba(14, 107, 82, 0.25);
+  background: #fff;
+  color: var(--ink, #16202e);
+}
+.lg-ghost:hover {
+  border-color: var(--ledger, #0e6b52);
+  background: var(--wash, #eef5f1);
+}
+.lg-ghost svg {
+  width: 18px;
+  height: 18px;
+  color: var(--ledger, #0e6b52);
+}
+
+/* ---- the "or" divider --------------------------------------------------- */
+.lg-or {
+  position: relative;
+  margin: 1.1rem 0;
+  text-align: center;
+}
+.lg-or::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(22, 32, 46, 0.12);
+}
+.lg-or span {
+  position: relative;
+  padding: 0 0.7rem;
+  background: #fff;
+  font-size: 0.85rem;
+  color: rgba(22, 32, 46, 0.5);
+}
+
+/* ---- small text bits ---------------------------------------------------- */
+.lg-err {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #c62828;
+}
+.lg-terms {
+  margin: 1.1rem 0 0;
+  text-align: center;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: rgba(22, 32, 46, 0.5);
+}
+.lg-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+}
+.lg-muted {
+  color: rgba(22, 32, 46, 0.55);
+}
+.lg-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+  cursor: pointer;
+}
+.lg-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- the email "check your inbox" state --------------------------------- */
+.lg-done {
+  text-align: center;
+}
+.lg-done__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 13px;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.lg-done__tick svg {
+  width: 100%;
+  height: 100%;
+}
+.lg-done p {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: rgba(22, 32, 46, 0.75);
+}
+
+/* ---- the standalone /login page ----------------------------------------- */
+.lg-page {
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+}
+
+@media (max-width: 420px) {
+  .lg-card {
+    padding: 1.7rem 1.3rem 1.3rem;
+  }
+  .lg-otp {
+    gap: 0.35rem;
+  }
+  .lg-otp input {
+    font-size: 1rem;
+  }
+  .lg-cc__menu {
+    min-width: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-scrim,
+  .lg-card {
+    animation: none;
+  }
+  .lg-primary:hover:not(:disabled) {
+    transform: none;
+  }
+}

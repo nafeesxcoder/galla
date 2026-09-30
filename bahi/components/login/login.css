@@ -452,3 +452,35 @@
     transform: none;
   }
 }
+
+/* ---- the /login page while it works out where to send you --------------- */
+.lg-wait {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  padding: 4rem 0;
+  text-align: center;
+}
+.lg-wait p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(22, 32, 46, 0.66);
+}
+.lg-wait__spin {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(14, 107, 82, 0.18);
+  border-top-color: var(--ledger, #0e6b52);
+  animation: lg-spin 0.7s linear infinite;
+}
+@keyframes lg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-wait__spin {
+    animation-duration: 2.4s;
+  }
+}

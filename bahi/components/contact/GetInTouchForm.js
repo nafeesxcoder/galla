@@ -1,15 +1,26 @@
 // ===========================================================================
 // SECTION 2 (right column)  -  the "Get In Touch" form
 // ---------------------------------------------------------------------------
-// FRONTEND ONLY right now - nothing is sent to a server. When the backend
-// exists, put the fetch() where it says "BACKEND CALL GOES HERE".
+// This now posts to /api/contact, which emails you the message.
 //
-// Every field is validated before submit and the first bad field gets the
-// focus, so nobody has to hunt for what went wrong.
+// Three things worth knowing:
+//
+//   1. The validation here is for the visitor's benefit. The API route
+//      checks everything again, because anyone can post straight to it.
+//
+//   2. There is a hidden "website" field. People never see it and never
+//      fill it; bots fill every field they find. Anything in it means a bot,
+//      and the server quietly drops the message.
+//
+//   3. If mail is not set up yet, or sending fails, the form SAYS SO and
+//      shows your email address instead. It does not pretend the message
+//      went through. A form that silently swallows enquiries costs you
+//      customers you never find out about.
 // ===========================================================================
 
 "use client";
 import { useRef, useState } from "react";
+import { SITE } from "@/lib/site";
 
 const EMPTY = { name: "", phone: "", email: "", company: "", message: "" };
 
@@ -18,11 +29,14 @@ export default function GetInTouchForm({ form }) {
   const [err, setErr] = useState({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
+  const [failed, setFailed] = useState("");
+  const [trap, setTrap] = useState("");
   const refs = useRef({});
 
   function set(key, value) {
     setV((old) => ({ ...old, [key]: value }));
     if (err[key]) setErr((old) => ({ ...old, [key]: "" }));
+    if (failed) setFailed("");
   }
 
   function check() {
@@ -47,17 +61,34 @@ export default function GetInTouchForm({ form }) {
     }
 
     setBusy(true);
+    setFailed("");
 
-    // ---- BACKEND CALL GOES HERE ------------------------------------------
-    // await fetch("/api/contact", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(v),
-    // });
-    // ----------------------------------------------------------------------
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...v, website: trap }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        setDone(true);
+      } else if (res.status === 422 && data.fields) {
+        // the server found something the browser missed
+        setErr(data.fields);
+        refs.current[Object.keys(data.fields)[0]]?.focus();
+      } else if (res.status === 429) {
+        setFailed("too-many");
+      } else {
+        setFailed("send");
+      }
+    } catch {
+      // no network, or the request never left the browser
+      setFailed("send");
+    }
 
     setBusy(false);
-    setDone(true);
   }
 
   if (done) {
@@ -139,6 +170,34 @@ export default function GetInTouchForm({ form }) {
 
       {field("company", "text", { autoComplete: "organization" })}
       {field("message", "textarea")}
+
+      {/* The bot trap. Hidden from people and from screen readers, and never
+          focusable, so nobody real can land in it by accident. */}
+      <div className="fm-trap" aria-hidden="true">
+        <label htmlFor="ct-website">Website</label>
+        <input
+          id="ct-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={trap}
+          onChange={(e) => setTrap(e.target.value)}
+        />
+      </div>
+
+      {failed && (
+        <p className="fm-failed" role="alert">
+          {failed === "too-many" ? (
+            <>That is a lot of messages in a short time. Please wait a few minutes and try again.</>
+          ) : (
+            <>
+              We could not send that just now. Please email us directly at{" "}
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and we will pick it up.
+            </>
+          )}
+        </p>
+      )}
 
       <p className="ct-note">
         <i aria-hidden="true">*</i>

@@ -1,0 +1,585 @@
+/* ==========================================================================
+   ACCOUNT AREA CSS
+   Every class starts with "ac-" so nothing clashes with the other pages.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+.ac-loading {
+  padding: 3rem 0;
+  text-align: center;
+  color: rgba(22, 32, 46, 0.55);
+}
+
+/* ---- signed out panel --------------------------------------------------- */
+.ac-guest {
+  max-width: 460px;
+  margin: 1rem auto;
+  padding: 2.6rem 1.8rem;
+  text-align: center;
+  border-radius: 20px;
+  background: var(--wash, #eef5f1);
+  border: 1px solid rgba(14, 107, 82, 0.14);
+}
+.ac-guest__icon {
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ledger, #0e6b52);
+}
+.ac-guest__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.ac-guest h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+.ac-guest p {
+  margin: 0 auto 1.4rem;
+  max-width: 38ch;
+  font-size: 0.95rem;
+  color: rgba(22, 32, 46, 0.7);
+}
+
+/* ---- page head ---------------------------------------------------------- */
+.ac-head {
+  padding: 2.4rem 0 1.4rem;
+  background: linear-gradient(180deg, var(--wash, #eef5f1), #fff);
+}
+.ac-head h1 {
+  margin: 0 0 0.35rem;
+}
+.ac-head .lead {
+  margin: 0;
+}
+.ac-head__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+.ac-back {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+  text-decoration: none;
+}
+.ac-back:hover {
+  text-decoration: underline;
+}
+
+/* ---- layout ------------------------------------------------------------- */
+.ac-main {
+  padding-top: 1.6rem;
+}
+.ac-grid {
+  display: grid;
+  grid-template-columns: 1fr 330px;
+  gap: 1.4rem;
+  align-items: start;
+}
+.ac-col,
+.ac-side {
+  display: grid;
+  gap: 1.1rem;
+}
+.ac-narrow {
+  max-width: 620px;
+  display: grid;
+  gap: 1.1rem;
+}
+
+/* ---- the card everything sits in ---------------------------------------- */
+.ac-card {
+  padding: 1.4rem 1.5rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+}
+.ac-card h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.05rem;
+}
+.ac-sub {
+  margin: -0.4rem 0 1rem;
+  font-size: 0.88rem;
+  color: rgba(22, 32, 46, 0.62);
+}
+.ac-empty {
+  margin: 0;
+  padding: 1.1rem;
+  border-radius: 12px;
+  background: var(--wash, #eef5f1);
+  font-size: 0.9rem;
+  color: rgba(22, 32, 46, 0.65);
+}
+.ac-note {
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(22, 32, 46, 0.55);
+}
+
+/* ---- plan --------------------------------------------------------------- */
+.ac-plan__name {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ledger, #0e6b52);
+}
+.ac-plan__meta {
+  margin: 0.25rem 0 1rem;
+  font-size: 0.9rem;
+  color: rgba(22, 32, 46, 0.68);
+}
+
+/* ---- licence box -------------------------------------------------------- */
+.ac-lic {
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+  overflow: hidden;
+}
+.ac-lic__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--wash, #eef5f1);
+}
+.ac-lic__head h2 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+.ac-lic__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+  cursor: pointer;
+}
+.ac-lic__caret {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-1px, -1px);
+  transition: transform 0.2s ease;
+}
+.ac-lic__caret.up {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+.ac-lic__body {
+  padding: 1.2rem 1.5rem 1.4rem;
+}
+.ac-lic__body p {
+  margin: 0 0 0.9rem;
+  font-size: 0.9rem;
+  color: rgba(22, 32, 46, 0.68);
+}
+
+/* ---- quick links -------------------------------------------------------- */
+.ac-quick {
+  padding: 1.4rem 1.5rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+}
+.ac-quick h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.02rem;
+}
+.ac-quick ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.ac-quick a {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 11px;
+  text-decoration: none;
+  color: var(--ink, #16202e);
+  transition: background 0.15s ease;
+}
+.ac-quick a:hover {
+  background: var(--wash, #eef5f1);
+}
+.ac-quick__icon {
+  flex: none;
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  border-radius: 9px;
+  background: rgba(14, 107, 82, 0.09);
+  color: var(--ledger, #0e6b52);
+}
+.ac-quick__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.ac-quick strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--ledger, #0e6b52);
+}
+.ac-quick em {
+  display: block;
+  margin-top: 0.1rem;
+  font-style: normal;
+  font-size: 0.82rem;
+  color: rgba(22, 32, 46, 0.6);
+}
+.ac-quick.is-compact a {
+  padding: 0.55rem 0.6rem;
+}
+
+/* ---- downloads ---------------------------------------------------------- */
+.ac-dl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.ac-dl a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 11px;
+  border: 1px solid rgba(14, 107, 82, 0.12);
+  text-decoration: none;
+  color: var(--ink, #16202e);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.ac-dl a:hover {
+  border-color: var(--ledger, #0e6b52);
+  background: var(--wash, #eef5f1);
+}
+.ac-dl__icon {
+  flex: none;
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  border-radius: 9px;
+  background: rgba(14, 107, 82, 0.09);
+  color: var(--ledger, #0e6b52);
+}
+.ac-dl__icon svg,
+.ac-dl__go svg {
+  width: 100%;
+  height: 100%;
+}
+.ac-dl strong {
+  display: block;
+  font-size: 0.92rem;
+}
+.ac-dl em {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: rgba(22, 32, 46, 0.58);
+}
+.ac-dl a > span:nth-child(2) {
+  flex: 1;
+}
+.ac-dl__go {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--ledger, #0e6b52);
+}
+
+/* ---- details list ------------------------------------------------------- */
+.ac-dl-list {
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+.ac-dl-list > div {
+  display: grid;
+  gap: 0.1rem;
+}
+.ac-dl-list dt {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--marigold, #f2a20c);
+}
+.ac-dl-list dd {
+  margin: 0;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--ink, #16202e);
+  word-break: break-word;
+}
+
+/* ---- simple pages ------------------------------------------------------- */
+.ac-steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: rgba(22, 32, 46, 0.78);
+}
+.ac-bullets {
+  list-style: none;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.ac-bullets li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: rgba(22, 32, 46, 0.78);
+}
+.ac-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.62rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--marigold, #f2a20c);
+}
+
+/* ---- licence key form --------------------------------------------------- */
+.ac-field {
+  display: block;
+  margin-bottom: 1.1rem;
+}
+.ac-field > span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+}
+.ac-field input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(14, 107, 82, 0.2);
+  background: var(--wash, #eef5f1);
+  font: inherit;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--ink, #16202e);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.ac-field input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--ledger, #0e6b52);
+  box-shadow: 0 0 0 3px rgba(14, 107, 82, 0.14);
+}
+.ac-field input.is-bad {
+  border-color: #c62828;
+}
+.ac-err {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c62828;
+}
+.ac-done {
+  text-align: center;
+  padding: 2.2rem 1.5rem;
+}
+.ac-done__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 13px;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.ac-done__tick svg {
+  width: 100%;
+  height: 100%;
+}
+.ac-done p {
+  margin: 0.3rem auto 0;
+  max-width: 40ch;
+  font-size: 0.93rem;
+  color: rgba(22, 32, 46, 0.7);
+}
+
+/* ---- the navbar My Account dropdown ------------------------------------- */
+.ac-menu {
+  position: relative;
+}
+.ac-menu__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+}
+.ac-menu__btn:hover {
+  background: var(--wash, #eef5f1);
+}
+.ac-menu__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.ac-menu__dot svg {
+  width: 15px;
+  height: 15px;
+}
+.ac-menu__caret {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-1px, -1px);
+  transition: transform 0.2s ease;
+}
+.ac-menu__caret.up {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+.ac-menu__drop {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 230px;
+  padding: 0.4rem;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.15);
+  box-shadow: 0 16px 40px rgba(22, 32, 46, 0.16);
+}
+.ac-menu__who {
+  margin: 0;
+  padding: 0.6rem 0.75rem 0.7rem;
+  border-bottom: 1px solid rgba(22, 32, 46, 0.1);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.ac-menu__who span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(22, 32, 46, 0.6);
+}
+.ac-menu__drop a,
+.ac-menu__out {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.55rem 0.75rem;
+  margin-top: 0.15rem;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.89rem;
+  color: var(--ink, #16202e);
+  text-decoration: none;
+  cursor: pointer;
+}
+.ac-menu__drop a:hover,
+.ac-menu__out:hover {
+  background: var(--wash, #eef5f1);
+}
+.ac-menu__out {
+  margin-top: 0.3rem;
+  border-top: 1px solid rgba(22, 32, 46, 0.1);
+  border-radius: 0 0 9px 9px;
+  color: #c62828;
+  font-weight: 600;
+}
+
+/* ---- the pricing sidebar ------------------------------------------------ */
+.ac-railgrid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.6rem;
+  align-items: start;
+}
+.ac-rail {
+  display: grid;
+  gap: 1rem;
+  position: sticky;
+  top: 1.5rem;
+}
+.ac-rail__title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* ---- responsive --------------------------------------------------------- */
+@media (max-width: 1000px) {
+  .ac-grid,
+  .ac-railgrid {
+    grid-template-columns: 1fr;
+  }
+  .ac-rail {
+    position: static;
+  }
+}
+@media (max-width: 560px) {
+  .ac-card,
+  .ac-quick {
+    padding: 1.2rem 1.1rem;
+  }
+  .ac-lic__head,
+  .ac-lic__body {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+  .ac-menu__drop {
+    right: auto;
+    left: 0;
+  }
+}

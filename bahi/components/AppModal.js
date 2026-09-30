@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "./LangProvider";
 
-// anchor = { top, left } - nav button ke neeche khulta hai
+// anchor = { top, left } - it opens underneath the navbar button
 export default function AppModal({ open, onClose, anchor }) {
   const { t } = useLang();
   const [phone, setPhone] = useState("");
@@ -47,7 +47,9 @@ export default function AppModal({ open, onClose, anchor }) {
     e.preventDefault();
     if (!/^[6-9]\d{9}$/.test(phone)) return setErr(t("mobile.smsErr"));
     setErr("");
-    // TODO: yahan apna SMS API call lagao
+    // TODO: your SMS API call goes here. Sending an SMS in India needs an
+    //       SMS provider and a TRAI DLT registration for the sender ID and
+    //       template. The registration is the slow part - start it early.
     setSent(true);
   }
 

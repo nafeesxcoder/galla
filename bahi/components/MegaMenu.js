@@ -4,7 +4,7 @@ import MenuIcon from "./MenuIcon";
 import { SOFTWARE } from "@/lib/software";
 import { INDUSTRIES } from "@/lib/industries";
 
-// Menu me chhote naam, taaki do line me na jayein
+// Shorter names for the menu, so none of them wrap onto two lines
 const SHORT = {
   "grocery-store": "Grocery",
   "jewellery-store": "Jewellery",
@@ -20,7 +20,9 @@ const SHORT = {
 export default function MegaMenu({ open, onClose, top }) {
   if (!open) return null;
 
-  const industries = INDUSTRIES.slice(0, 8);
+  // Every industry is listed here, because there is no separate
+  // /solutions page to send people to for the rest.
+  const industries = INDUSTRIES;
 
   return (
     <>
@@ -57,9 +59,6 @@ export default function MegaMenu({ open, onClose, top }) {
                 </li>
               ))}
             </ul>
-            <Link href="/solutions" className="mega__all" onClick={onClose}>
-              See all {INDUSTRIES.length} business types &rarr;
-            </Link>
           </div>
 
           <div className="mega__col">

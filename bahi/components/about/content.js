@@ -18,11 +18,10 @@ export const CONTENT = {
   hero: {
     badge: "About Galla",
     h1: "Billing software built for small Indian businesses",
-    lead:
-      "Galla is a GST billing, inventory and accounting app for shop owners, wholesalers and small manufacturers. Make bills, track stock, follow up on payments and keep your books clean - from your phone or your computer.",
+    lead: "Galla is a GST billing, inventory and accounting app for shop owners, wholesalers and small manufacturers. Make bills, track stock, follow up on payments and keep your books clean - from your phone or your computer.",
     cta: "Download Galla",
     cta2: "See pricing",
-    img: "/Ahero.png", // <- hero image, already sitting in public/
+    img: "/Abhero.png", // <- hero image, already sitting in public/
     imgAlt: "Galla billing software on mobile and desktop",
     trust: ["GST-ready bills", "Works offline", "Free plan available"],
   },
@@ -45,8 +44,7 @@ export const CONTENT = {
   nationwide: {
     eyebrow: "Nationwide Coverage",
     h2: "Supporting Local Small & Medium Businesses Across Every Corner of India",
-    lead:
-      "From a neighbourhood kirana store to a growing manufacturing unit, Galla is built around how Indian SME owners actually work - local language support, offline-first billing, and a simple screen that anyone on your counter can learn in a day.",
+    lead: "From a neighbourhood kirana store to a growing manufacturing unit, Galla is built around how Indian SME owners actually work - local language support, offline-first billing, and a simple screen that anyone on your counter can learn in a day.",
     // TODO: replace these once you have real numbers
     stats: [
       ["SMB", "Focused from day one"],
@@ -65,8 +63,7 @@ export const CONTENT = {
   journey: {
     eyebrow: "A day with Galla",
     h2: "Your Business Journey, Simpler & Safer",
-    lead:
-      "Galla stays with you from the moment you open your shop until you pull the shutter down at night.",
+    lead: "Galla stays with you from the moment you open your shop until you pull the shutter down at night.",
     items: [
       {
         no: "01",
@@ -105,8 +102,7 @@ export const CONTENT = {
   multiDevice: {
     eyebrow: "Mobile + Desktop",
     h2: "The Real Multi-Device Experience",
-    lead:
-      "Cloud sync lets you run the business from the phone in your pocket and the computer on your counter at the same time - whether you are at a supplier's warehouse or away on a holiday.",
+    lead: "Cloud sync lets you run the business from the phone in your pocket and the computer on your counter at the same time - whether you are at a supplier's warehouse or away on a holiday.",
     stats: [
       ["99.9%", "Uptime target"],
       ["Instant", "Cloud sync"],
@@ -122,8 +118,7 @@ export const CONTENT = {
   whyChoose: {
     eyebrow: "Real shops, real counters",
     h2: "Why Businesses Choose Galla Billing Software",
-    lead:
-      "Owners move to Galla for one reason - the daily work gets shorter. Billing, stock and follow-ups all sit in one place instead of three registers.",
+    lead: "Owners move to Galla for one reason - the daily work gets shorter. Billing, stock and follow-ups all sit in one place instead of three registers.",
     stats: [
       ["Less", "Manual work at the counter"],
       ["Accurate", "GST calculations on every bill"],
@@ -291,10 +286,22 @@ export const CONTENT = {
     h2: "How to Set Up Galla Billing Software Quickly",
     lead: "Four steps and your first bill is out.",
     items: [
-      ["Download and Start Free", "Install Galla and open the free trial. No card, no paperwork."],
-      ["Set Up Business & Add Items", "Enter your shop details and add your products or services with price and GST rate."],
-      ["Customise & Create Bills", "Pick an invoice format, add your logo, and start billing customers."],
-      ["Explore Reports", "Check sales, stock and profit reports to see how the shop is actually doing."],
+      [
+        "Download and Start Free",
+        "Install Galla and open the free trial. No card, no paperwork.",
+      ],
+      [
+        "Set Up Business & Add Items",
+        "Enter your shop details and add your products or services with price and GST rate.",
+      ],
+      [
+        "Customise & Create Bills",
+        "Pick an invoice format, add your logo, and start billing customers.",
+      ],
+      [
+        "Explore Reports",
+        "Check sales, stock and profit reports to see how the shop is actually doing.",
+      ],
     ],
     // No image in the setup section - the four numbered steps are enough.
     // Fill in img here if you want a screenshot; it appears automatically.
@@ -308,8 +315,7 @@ export const CONTENT = {
   difference: {
     eyebrow: "The difference",
     h2: "How Galla Is Changing Daily Billing",
-    lead:
-      "Moving from a paper bill book to digital billing changes the day itself - fewer mistakes, faster counters and records you can actually search.",
+    lead: "Moving from a paper bill book to digital billing changes the day itself - fewer mistakes, faster counters and records you can actually search.",
     // TODO: replace these once you have real numbers
     stats: [
       ["Minutes", "To make your first bill"],
@@ -356,9 +362,18 @@ export const CONTENT = {
   languages: {
     eyebrow: "9+ language support",
     h2: "Multi-Language Support Across India",
-    lead:
-      "Metro city, small town or village - the app and our support team speak the language you are comfortable with. Download Galla and ask for a free demo in your own language.",
-    list: ["हिंदी", "English", "தமிழ்", "తెలుగు", "मराठी", "ગુજરાતી", "বাংলা", "ಕನ್ನಡ", "ਪੰਜਾਬੀ"],
+    lead: "Metro city, small town or village - the app and our support team speak the language you are comfortable with. Download Galla and ask for a free demo in your own language.",
+    list: [
+      "हिंदी",
+      "English",
+      "தமிழ்",
+      "తెలుగు",
+      "मराठी",
+      "ગુજરાતી",
+      "বাংলা",
+      "ಕನ್ನಡ",
+      "ਪੰਜਾਬੀ",
+    ],
     note: "Priority support in 9+ languages, so nobody gets stuck because of a language barrier.",
     img: "",
     art: "langs",
@@ -390,8 +405,7 @@ export const CONTENT = {
   everyType: {
     eyebrow: "For Every Business Type",
     h2: "One Billing Software Across Industries",
-    lead:
-      "Built for everyday Indian businesses that want simple billing and better control over the day.",
+    lead: "Built for everyday Indian businesses that want simple billing and better control over the day.",
     items: [
       {
         h3: "Retailers & Kirana Stores",
@@ -402,7 +416,10 @@ export const CONTENT = {
       {
         h3: "Wholesalers & Distributors",
         p: "Handle bulk orders, party credit, deliveries and payments without losing track of who owes what.",
-        link: ["Distributor billing software", "/billing-software/wholesale-and-distribution"],
+        link: [
+          "Distributor billing software",
+          "/billing-software/wholesale-and-distribution",
+        ],
         icon: "truck",
       },
       {
@@ -420,12 +437,20 @@ export const CONTENT = {
   app: {
     eyebrow: "Galla mobile app",
     h2: "Manage Your Business From Your Phone",
-    lead:
-      "The whole shop in your pocket - made for owners who are rarely sitting at one desk all day.",
+    lead: "The whole shop in your pocket - made for owners who are rarely sitting at one desk all day.",
     items: [
-      ["Available on Android & iOS", "The same experience across whichever phone you carry."],
-      ["Free plan available", "Start on the free version and get the essential billing features at no cost."],
-      ["Instant cloud sync", "Whatever you enter on mobile shows up on your computer straight away."],
+      [
+        "Available on Android & iOS",
+        "The same experience across whichever phone you carry.",
+      ],
+      [
+        "Free plan available",
+        "Start on the free version and get the essential billing features at no cost.",
+      ],
+      [
+        "Instant cloud sync",
+        "Whatever you enter on mobile shows up on your computer straight away.",
+      ],
     ],
     img: "",
     art: "app",

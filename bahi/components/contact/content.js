@@ -30,21 +30,15 @@ export const CONTENT = {
 
     phone: {
       title: "Phone",
-      // TODO: your real numbers. Remove any you do not have.
-      numbers: [
-        { label: "Sales", value: "+91 00000 00000" },
-        { label: "Support", value: "+91 00000 00000" },
-      ],
+      numbers: [{ label: "Sales and support", value: "+91 74092 33994" }],
+      // TODO: check these are the hours you will actually answer the phone.
+      //       Published hours nobody picks up on are worse than none.
       hours: ["09:00 AM - 07:00 PM (Monday to Saturday)", "10:00 AM - 05:00 PM (Sunday)"],
     },
 
     email: {
       title: "Email",
-      // TODO: your real email addresses
-      items: [
-        { label: "Support", value: "support@example.com" },
-        { label: "Marketing & Collaboration", value: "media@example.com" },
-      ],
+      items: [{ label: "Support and enquiries", value: "nafeesahadbly@gmail.com" }],
     },
   },
 

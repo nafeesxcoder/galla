@@ -401,3 +401,155 @@
     padding: 1.2rem;
   }
 }
+
+/* ==========================================================================
+   THE PC DOWNLOAD BAND
+   ========================================================================== */
+.dk-get {
+  background: linear-gradient(180deg, #fff, var(--wash, #eef5f1));
+  /* so the hero's "Download for PC" link does not land under the navbar */
+  scroll-margin-top: 86px;
+}
+.dk-get__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 2.6rem;
+  align-items: start;
+}
+
+.dk-get__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+.dk-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 232px;
+  padding: 0.85rem 1.1rem;
+  border-radius: 13px;
+  background: var(--ink, #16202e);
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.16s ease, opacity 0.16s ease;
+}
+.dk-dl:hover {
+  transform: translateY(-2px);
+  opacity: 0.93;
+}
+.dk-dl__icon {
+  flex: none;
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  padding: 7px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.13);
+}
+.dk-dl__icon svg,
+.dk-dl__go svg {
+  width: 100%;
+  height: 100%;
+}
+.dk-dl span:nth-child(2) {
+  display: grid;
+  line-height: 1.2;
+}
+.dk-dl strong {
+  font-size: 1rem;
+}
+.dk-dl em {
+  font-style: normal;
+  font-size: 0.76rem;
+  opacity: 0.72;
+}
+.dk-dl__go {
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+}
+
+/* shown instead of the buttons while there is nothing to download */
+.dk-get__soon {
+  margin: 1.6rem 0 0;
+  padding: 0.95rem 1.15rem;
+  border-radius: 12px;
+  border: 1px dashed rgba(14, 107, 82, 0.3);
+  background: #fff;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: rgba(22, 32, 46, 0.75);
+  max-width: 60ch;
+}
+
+.dk-get__facts {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.dk-get__facts li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 0.94rem;
+  color: rgba(22, 32, 46, 0.78);
+}
+.dk-get__facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.28rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+}
+.dk-get__facts li::after {
+  content: "";
+  position: absolute;
+  left: 0.31rem;
+  top: 0.57rem;
+  width: 0.44rem;
+  height: 0.23rem;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+}
+
+.dk-get__side {
+  padding: 1.4rem 1.3rem;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 36px rgba(15, 23, 34, 0.07);
+}
+.dk-get__side h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+}
+.dk-get__side p {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(22, 32, 46, 0.72);
+}
+
+@media (max-width: 900px) {
+  .dk-get__grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .dk-dl {
+    min-width: 0;
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dk-dl:hover {
+    transform: none;
+  }
+}

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { LangProvider } from "@/components/LangProvider";
 import { SITE } from "@/lib/site";
 import { SITE_URL, DEFAULT_DESC } from "@/lib/seo";
+import LoginModal from "@/components/login/LoginModal";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -38,7 +39,7 @@ export const metadata = {
 
 export const viewport = { themeColor: "#0e6b52" };
 
-// Google ko batata hai ki ye kaunsi company aur kaunsa product hai
+// Tells Google which company this is and what the product is
 const orgSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -69,7 +70,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -91,6 +92,11 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main>{children}</main>
           <Footer />
+
+          {/* The login popup. It sits here so it can use the language
+              context, and it opens itself when anyone clicks a link
+              pointing at /login - no change needed in Navbar.js. */}
+          <LoginModal />
         </LangProvider>
       </body>
     </html>

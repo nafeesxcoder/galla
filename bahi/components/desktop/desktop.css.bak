@@ -1,7 +1,7 @@
 /* ==========================================================================
    DESKTOP PAGE CSS
-   Sab classes "dk-" se start hoti hain taaki kisi aur page se na takrayein.
-   Ye file globals.css me import hoti hai.
+   Every class starts with "dk-" so nothing clashes with the other pages.
+   This file is imported from globals.css.
    ========================================================================== */
 
 /* ---- Image slot + drawings --------------------------------------------- */

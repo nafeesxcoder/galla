@@ -1,5 +1,8 @@
 ﻿// Live domain yahan daalo (bina trailing slash)
-export const SITE_URL = "https://galla-seven.vercel.app";
+// The domain lives in one place. Set NEXT_PUBLIC_SITE_URL in Vercel
+// (Settings -> Environment Variables) when the real domain is decided;
+// the value below is only the fallback for local work.
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://galla-seven.vercel.app";
 
 export const DEFAULT_DESC =
   "Create GST and non-GST invoices, manage stock, track payments and get GST-ready reports. Free billing software for small businesses in India.";

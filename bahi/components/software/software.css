@@ -1,0 +1,293 @@
+/* ==========================================================================
+   SOFTWARE PAGES CSS
+   Every class starts with "sw-" so nothing clashes with the other pages.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+/* ---- the long explanation block ----------------------------------------- */
+/* The heading lines up with every other section; only the paragraphs are
+   narrowed, because a line of body text past about 75 characters gets hard
+   to follow. */
+.sw-prose p {
+  max-width: 74ch;
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: rgba(22, 32, 46, 0.8);
+}
+
+/* ---- feature cards ------------------------------------------------------ */
+/* Locked to 3 columns. The shared .fgrid uses auto-fit and leaves six cards
+   in an ugly 4 + 2; six cards want 3 + 3. */
+.sw-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.2rem;
+  align-items: stretch;
+}
+.sw-trio > * {
+  height: 100%;
+}
+.sw-card {
+  animation: sw-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 65ms);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.sw-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(14, 107, 82, 0.3);
+  box-shadow: 0 14px 30px rgba(15, 23, 34, 0.07);
+}
+@keyframes sw-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* ---- the numbered steps ------------------------------------------------- */
+.sw-steps {
+  list-style: none;
+  counter-reset: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+.sw-steps li {
+  position: relative;
+  padding: 1.7rem 1.2rem 1.3rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(14, 107, 82, 0.13);
+  animation: sw-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+/* the line joining one step to the next */
+.sw-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 1.55rem;
+  right: -1rem;
+  width: 1rem;
+  height: 2px;
+  background: rgba(14, 107, 82, 0.22);
+}
+.sw-steps__num {
+  position: absolute;
+  top: -14px;
+  left: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--marigold, #f2a20c);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.sw-steps strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1.02rem;
+}
+.sw-steps p {
+  margin: 0;
+  font-size: 0.91rem;
+  line-height: 1.65;
+  color: rgba(22, 32, 46, 0.72);
+}
+
+/* ---- who it is for ------------------------------------------------------ */
+.sw-who {
+  list-style: none;
+  margin: 2.2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2rem;
+}
+.sw-who li {
+  display: flex;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid rgba(14, 107, 82, 0.14);
+}
+.sw-who__icon {
+  flex: none;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ledger, #0e6b52);
+}
+.sw-who__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.sw-who strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1.02rem;
+}
+.sw-who p {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: rgba(22, 32, 46, 0.72);
+}
+
+/* ---- the "included in every plan" list ---------------------------------- */
+.sw-checks {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 2rem;
+}
+.sw-checks li {
+  position: relative;
+  padding-left: 1.85rem;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: rgba(22, 32, 46, 0.8);
+}
+.sw-checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: var(--ledger, #0e6b52);
+}
+.sw-checks li::after {
+  content: "";
+  position: absolute;
+  left: 0.33rem;
+  top: 0.61rem;
+  width: 0.46rem;
+  height: 0.24rem;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+}
+
+/* ---- FAQ ---------------------------------------------------------------- */
+.sw-faq p {
+  margin: 0.7rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(22, 32, 46, 0.78);
+}
+
+/* ---- links to the other five pages -------------------------------------- */
+.sw-others {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+.sw-other {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: var(--wash, #eef5f1);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.16s ease, transform 0.16s ease;
+}
+.sw-other:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(15, 23, 34, 0.07);
+}
+.sw-other__icon {
+  flex: none;
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ledger, #0e6b52);
+}
+.sw-other:hover .sw-other__icon {
+  background: var(--ledger, #0e6b52);
+  color: #fff;
+}
+.sw-other__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.sw-other span {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+.sw-other strong {
+  font-size: 0.97rem;
+}
+.sw-other em {
+  font-style: normal;
+  font-size: 0.83rem;
+  line-height: 1.4;
+  color: rgba(22, 32, 46, 0.62);
+}
+
+/* ---- responsive --------------------------------------------------------- */
+@media (max-width: 1000px) {
+  .sw-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem 1rem;
+  }
+  /* the joining line only makes sense in a single row */
+  .sw-steps li:not(:last-child)::after {
+    display: none;
+  }
+  .sw-others {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .sw-trio {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sw-who,
+  .sw-checks {
+    grid-template-columns: 1fr;
+  }
+  .sw-checks {
+    gap: 0.7rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .sw-trio,
+  .sw-steps,
+  .sw-others {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sw-card,
+  .sw-steps li {
+    animation: none;
+  }
+  .sw-card:hover,
+  .sw-other:hover {
+    transform: none;
+  }
+}

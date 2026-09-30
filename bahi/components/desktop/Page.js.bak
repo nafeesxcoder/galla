@@ -1,9 +1,8 @@
 // ===========================================================================
 // DESKTOP PAGE - COMPOSITION
 // ---------------------------------------------------------------------------
-// Yahan sirf section ka order hai. Kisi section ko hatana ho to uski line
-// comment kar do, upar-niche karna ho to line move kar do.
-// Har section ka text  content.js  me hai.
+// This file only sets the order of the sections. To drop one, comment out
+// its line; to reorder, move the line. All the text lives in content.js.
 // ===========================================================================
 
 import CtaBand from "@/components/CtaBand";
@@ -35,7 +34,7 @@ export default function DesktopPage() {
       <UniversalDesktopCompatibility compatibility={c.compatibility} />
       <DesktopAppPricing pricing={c.pricing} />
       <EasyManagementOfAllBillingProcesses manage={c.manage} />
-      {/* Asli review aane tak chaho to is line ko comment kar sakte ho */}
+      {/* Comment this line out until you have real reviews */}
       <WhatCustomersAreSaying reviews={c.reviews} />
       <WatchHowToCreateBills demo={c.demo} />
       <WhyGallaInvoicingIsPerfect perfect={c.perfect} />

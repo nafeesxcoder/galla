@@ -1,0 +1,36 @@
+/* ==========================================================================
+   SHARED FORM BITS
+   Used by the contact form and the careers form. "fm-" so it does not
+   clash with their own "ct-" and "cr-" classes.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+/* ---- the bot trap ------------------------------------------------------- */
+/* Hidden the careful way. display:none would work on most bots, but some
+   skip anything with it, and this also keeps the field unreachable by
+   keyboard and by screen readers (it has aria-hidden and tabindex -1 too). */
+.fm-trap {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---- "that did not send" ------------------------------------------------ */
+.fm-failed {
+  margin: 1rem 0 0;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(180, 35, 24, 0.25);
+  background: #fdf3f2;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #8a2b21;
+}
+.fm-failed a {
+  color: #8a2b21;
+  font-weight: 700;
+  text-decoration: underline;
+}

@@ -5,6 +5,7 @@ import { LangProvider } from "@/components/LangProvider";
 import { SITE } from "@/lib/site";
 import { SITE_URL, DEFAULT_DESC } from "@/lib/seo";
 import LoginModal from "@/components/login/LoginModal";
+import { AuthProvider } from "@/components/account/AuthProvider";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <LangProvider>
+          <AuthProvider>
           <Navbar />
           <main>{children}</main>
           <Footer />
@@ -97,6 +99,7 @@ export default function RootLayout({ children }) {
               context, and it opens itself when anyone clicks a link
               pointing at /login - no change needed in Navbar.js. */}
           <LoginModal />
+        </AuthProvider>
         </LangProvider>
       </body>
     </html>

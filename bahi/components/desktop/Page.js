@@ -20,6 +20,7 @@ import WatchHowToCreateBills from "./WatchHowToCreateBills";
 import WhyGallaInvoicingIsPerfect from "./WhyGallaInvoicingIsPerfect";
 import MoreThanJustBilling from "./MoreThanJustBilling";
 import NeedHelpInstalling from "./NeedHelpInstalling";
+import DownloadForPc from "./DownloadForPc";
 import FrequentlyAskedQuestions from "./FrequentlyAskedQuestions";
 
 export default function DesktopPage() {
@@ -39,6 +40,7 @@ export default function DesktopPage() {
       <WatchHowToCreateBills demo={c.demo} />
       <WhyGallaInvoicingIsPerfect perfect={c.perfect} />
       <MoreThanJustBilling more={c.more} />
+      <DownloadForPc get={c.get} />
       <NeedHelpInstalling help={c.help} />
       <FrequentlyAskedQuestions faqs={c.faqs} />
       <CtaBand />

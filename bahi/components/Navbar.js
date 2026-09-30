@@ -7,6 +7,7 @@ import { useLang } from "./LangProvider";
 import LangSwitcher from "./LangSwitcher";
 import AppModal from "./AppModal";
 import MegaMenu from "./MegaMenu";
+import AccountMenu from "@/components/account/AccountMenu";
 
 export function Logo() {
   return (
@@ -140,9 +141,9 @@ export default function Navbar() {
           ))}
 
           <li>
-            <Link href="/login" aria-current={cur("/login")} onClick={close}>
+            <AccountMenu href="/login" aria-current={cur("/login")} onClick={close}>
               {t("nav.login")}
-            </Link>
+            </AccountMenu>
           </li>
         </ul>
 

@@ -17,9 +17,12 @@ export default function HeroBillingSoftwareForPc({ hero }) {
           <p className="lead">{hero.lead}</p>
 
           <div className="btn-row">
-            <Link href="/mobile-app" className="btn btn--primary">
+            {/* jumps to the download band further down this page. It used
+                to point at /mobile-app, which is the phone page - the wrong
+                place for a button that says "Download for PC". */}
+            <a href="#download" className="btn btn--primary">
               {hero.cta}
-            </Link>
+            </a>
             <Link href="/pricing" className="btn btn--ghost">
               {hero.cta2}
             </Link>

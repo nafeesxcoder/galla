@@ -1,7 +1,7 @@
 // ===========================================================================
 // SECTION 1  -  HERO
 // Heading: "Billing software for your PC"
-// IMAGE: content.js -> hero.img   (khali ho to Art.js ka "pc" drawing)
+// IMAGE: content.js -> hero.img  (if empty, the "pc" drawing from Art.js)
 // ===========================================================================
 
 import Link from "next/link";

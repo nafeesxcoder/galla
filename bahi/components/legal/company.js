@@ -22,11 +22,13 @@ export const COMPANY = {
   // Registered address, the same one you give the payment gateway
   address: "TODO Building, Street, Area, City, State 000000, India",
 
-  // Contact details
-  email: "TODO support@yourdomain.com",
-  legalEmail: "TODO legal@yourdomain.com",
-  privacyEmail: "TODO privacy@yourdomain.com",
-  phone: "TODO +91 00000 00000",
+  // Contact details. All three are the same address for now, which is
+  // normal for a small company. Split them once there is somebody
+  // different reading each one.
+  email: "nafeesahadbly@gmail.com",
+  legalEmail: "nafeesahadbly@gmail.com",
+  privacyEmail: "nafeesahadbly@gmail.com",
+  phone: "+91 74092 33994",
 
   // Your website
   site: "https://galla-seven.vercel.app",

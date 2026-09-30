@@ -1,16 +1,21 @@
 // ===========================================================================
 // SECTION 7  -  the general application form
 // ---------------------------------------------------------------------------
-// FRONTEND ONLY right now - nothing is sent to a server. When the backend
-// exists, put the fetch() where it says "BACKEND CALL GOES HERE".
+// This now posts to /api/careers, which emails you the application.
 //
-// There is no CV file upload on purpose: uploads need storage and virus
-// scanning before they are safe. The link field covers GitHub, LinkedIn or
-// a Drive link, which is enough to start a conversation.
+// There is still no CV file upload, on purpose: accepting files from
+// strangers means storage, size limits and virus scanning before it is safe.
+// The link field covers GitHub, LinkedIn or a Drive link, which is enough to
+// start a conversation - and you can ask for the file by reply.
+//
+// Same three rules as the contact form: the server revalidates everything,
+// there is a hidden bot trap, and a failed send says so rather than
+// pretending the application arrived.
 // ===========================================================================
 
 "use client";
 import { useRef, useState } from "react";
+import { SITE } from "@/lib/site";
 
 const EMPTY = { name: "", email: "", phone: "", role: "", link: "", message: "" };
 
@@ -19,11 +24,14 @@ export default function GeneralApplication({ apply }) {
   const [err, setErr] = useState({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
+  const [failed, setFailed] = useState("");
+  const [trap, setTrap] = useState("");
   const refs = useRef({});
 
   function set(key, value) {
     setV((old) => ({ ...old, [key]: value }));
     if (err[key]) setErr((old) => ({ ...old, [key]: "" }));
+    if (failed) setFailed("");
   }
 
   async function submit(e) {
@@ -43,17 +51,32 @@ export default function GeneralApplication({ apply }) {
     }
 
     setBusy(true);
+    setFailed("");
 
-    // ---- BACKEND CALL GOES HERE ------------------------------------------
-    // await fetch("/api/careers", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(v),
-    // });
-    // ----------------------------------------------------------------------
+    try {
+      const res = await fetch("/api/careers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...v, website: trap }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        setDone(true);
+      } else if (res.status === 422 && data.fields) {
+        setErr(data.fields);
+        refs.current[Object.keys(data.fields)[0]]?.focus();
+      } else if (res.status === 429) {
+        setFailed("too-many");
+      } else {
+        setFailed("send");
+      }
+    } catch {
+      setFailed("send");
+    }
 
     setBusy(false);
-    setDone(true);
   }
 
   if (done) {
@@ -144,6 +167,33 @@ export default function GeneralApplication({ apply }) {
 
           {field("link", "url")}
           {field("message", "textarea")}
+
+          {/* the bot trap - see the contact form for what it does */}
+          <div className="fm-trap" aria-hidden="true">
+            <label htmlFor="cr-website">Website</label>
+            <input
+              id="cr-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={trap}
+              onChange={(e) => setTrap(e.target.value)}
+            />
+          </div>
+
+          {failed && (
+            <p className="fm-failed" role="alert">
+              {failed === "too-many" ? (
+                <>That is a lot of applications in a short time. Please wait a few minutes and try again.</>
+              ) : (
+                <>
+                  We could not send that just now. Please email us directly at{" "}
+                  <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with your details.
+                </>
+              )}
+            </p>
+          )}
 
           <p className="cr-note">
             <i aria-hidden="true">*</i>
