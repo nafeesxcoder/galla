@@ -11,3 +11,7 @@ bahi/.env.local
 node_modules/
 .next/
 .expo/
+
+.env
+.env.local
+.env*.local
