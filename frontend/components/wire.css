@@ -1,0 +1,226 @@
+/* ==========================================================================
+   WHAT THE BACKEND WIRING ADDED
+   New pieces only - the shop setup form, the shop switcher, the recent
+   bills list, and the development OTP hint. Everything else reuses the
+   classes already in account.css and login.css.
+   This file is imported from globals.css.
+   ========================================================================== */
+
+/* ---- the development OTP hint ------------------------------------------ */
+/* Only rendered when the backend returns the code, which it refuses to do
+   in production. So this never appears on a live site. */
+.lg-devcode {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px dashed rgba(242, 162, 12, 0.55);
+  border-radius: 10px;
+  background: #fdf6e8;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.lg-devcode:hover {
+  background: #fbefd6;
+}
+.lg-devcode span {
+  font-size: 0.78rem;
+  color: #8c5c05;
+}
+.lg-devcode strong {
+  margin-left: auto;
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  color: var(--ink, #16202e);
+}
+.lg-devcode em {
+  font-style: normal;
+  font-size: 0.72rem;
+  color: #8c5c05;
+  opacity: 0.8;
+}
+
+/* ---- setting up the first shop ----------------------------------------- */
+.ac-setup {
+  max-width: 620px;
+}
+.ac-setup h1 {
+  margin-bottom: 0.4rem;
+}
+.ac-setup__form {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1.8rem;
+}
+.ac-setup__form .btn {
+  justify-self: start;
+}
+
+/* .ac-field already styles inputs; selects need the same treatment plus a
+   caret, since a bare select looks nothing like the inputs beside it. */
+.ac-field select {
+  width: 100%;
+  padding: 0.72rem 2.2rem 0.72rem 0.9rem;
+  border: 1.5px solid rgba(22, 32, 46, 0.16);
+  border-radius: 10px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%2316202e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 12px 8px;
+  font: inherit;
+  font-size: 0.97rem;
+  color: var(--ink, #16202e);
+  appearance: none;
+  cursor: pointer;
+}
+.ac-field select:focus {
+  outline: none;
+  border-color: var(--ledger, #0e6b52);
+}
+.ac-field.is-bad select {
+  border-color: #b42318;
+}
+
+/* the line under a field explaining why it matters */
+.ac-hint {
+  display: block;
+  margin-top: 0.4rem;
+  font-style: normal;
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: rgba(22, 32, 46, 0.6);
+}
+
+.ac-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+/* ---- switching between shops ------------------------------------------- */
+.ac-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+.ac-switch > span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(22, 32, 46, 0.6);
+}
+.ac-switch select {
+  padding: 0.4rem 1.9rem 0.4rem 0.7rem;
+  border: 1.5px solid rgba(14, 107, 82, 0.25);
+  border-radius: 8px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%230e6b52' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  background-size: 10px 7px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ledger, #0e6b52);
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ---- recent bills ------------------------------------------------------ */
+.ac-bills {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  display: grid;
+}
+.ac-bills li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(22, 32, 46, 0.09);
+}
+.ac-bills li:first-child {
+  border-top: 0;
+}
+.ac-bills li > span {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.ac-bills strong {
+  font-size: 0.95rem;
+}
+.ac-bills em {
+  font-style: normal;
+  font-size: 0.82rem;
+  color: rgba(22, 32, 46, 0.62);
+}
+.ac-bills__amt {
+  text-align: right;
+  flex: none;
+}
+
+/* the status chip */
+.ac-pill {
+  justify-self: end;
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: var(--wash, #eef5f1);
+  color: rgba(22, 32, 46, 0.65);
+}
+.ac-pill--paid {
+  background: #d5ede2;
+  color: #0b5240;
+}
+.ac-pill--partial {
+  background: #fdf1dc;
+  color: #8c5c05;
+}
+.ac-pill--issued {
+  background: #e7eef6;
+  color: #24466b;
+}
+.ac-pill--cancelled {
+  background: #fdeceb;
+  color: #8a2b21;
+  text-decoration: line-through;
+}
+
+/* ---- responsive --------------------------------------------------------- */
+@media (max-width: 620px) {
+  .ac-two {
+    grid-template-columns: 1fr;
+  }
+  .ac-bills li {
+    align-items: flex-start;
+  }
+}
+
+/* ---- licence statuses ---------------------------------------------------
+   The pills above are a bill's payment state. A licence has its own set:
+   active, issued (bought but not attached yet), expired, revoked. "issued"
+   is already defined above and reads the same here. */
+.ac-pill--active {
+  background: #d5ede2;
+  color: #0b5240;
+}
+.ac-pill--expired {
+  background: #eceff3;
+  color: #4a5765;
+}
+.ac-pill--revoked {
+  background: #fdeceb;
+  color: #8a2b21;
+  text-decoration: line-through;
+}

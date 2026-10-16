@@ -5,3 +5,9 @@ bahi/build/
 bahi/.env
 bahi/.env.local
 *.log
+# installer backups
+*.bak
+
+node_modules/
+.next/
+.expo/

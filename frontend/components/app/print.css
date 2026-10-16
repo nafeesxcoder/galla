@@ -1,0 +1,344 @@
+/* ==========================================================================
+   THE PRINTED BILL
+   --------------------------------------------------------------------------
+   Prefixed pr-. Hidden on screen; only the printer ever sees it.
+
+   Two deliberate decisions:
+
+   1. Everything is in points and millimetres, not pixels. A bill has to come
+      out the same size whatever the browser's zoom was set to.
+   2. No colour that depends on being printed in colour. Most shops have a
+      black and white laser or a thermal roll, so the layout is carried by
+      rules and weight, and anything that only reads as a colour would read
+      as nothing at all.
+   ========================================================================== */
+
+.pr-sheet {
+  display: none;
+}
+
+@media print {
+  /* --------------------------------------------------------------------
+     A4
+     -------------------------------------------------------------------- */
+  @page {
+    size: A4;
+    margin: 12mm 12mm 14mm;
+  }
+
+  .pr-sheet {
+    display: block;
+    color: #000;
+    background: #fff;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.35;
+  }
+
+  .pr-a4 {
+    width: 100%;
+  }
+
+  .pr-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10mm;
+    border-bottom: 1.2pt solid #000;
+    padding-bottom: 3mm;
+  }
+
+  .pr-shop {
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  .pr-shop-name {
+    font-size: 15pt;
+    font-weight: 700;
+    letter-spacing: -0.2pt;
+    margin-bottom: 1mm;
+  }
+
+  .pr-title {
+    text-align: right;
+    flex: 0 0 auto;
+  }
+
+  .pr-title-main {
+    font-size: 13pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6pt;
+  }
+
+  .pr-copy {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.4pt;
+  }
+
+  .pr-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3mm 8mm;
+    padding: 2.5mm 0;
+    border-bottom: 0.4pt solid #000;
+  }
+
+  .pr-k {
+    display: block;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.4pt;
+    color: #444;
+  }
+
+  .pr-v {
+    font-weight: 600;
+    font-size: 10pt;
+  }
+
+  .pr-parties {
+    display: flex;
+    gap: 8mm;
+    padding: 3mm 0;
+    border-bottom: 0.4pt solid #000;
+  }
+
+  .pr-party {
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  .pr-party-h {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.4pt;
+    color: #444;
+    margin-bottom: 0.8mm;
+  }
+
+  .pr-party-name {
+    font-weight: 700;
+    font-size: 10.5pt;
+  }
+
+  /* the lines */
+  .pr-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3mm;
+    font-size: 9pt;
+  }
+
+  .pr-table th {
+    text-align: left;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.3pt;
+    border-bottom: 0.8pt solid #000;
+    padding: 1.6mm 1.5mm;
+    white-space: nowrap;
+  }
+
+  .pr-table td {
+    padding: 1.6mm 1.5mm;
+    border-bottom: 0.3pt solid #999;
+    vertical-align: top;
+  }
+
+  /* Repeat the header if the bill runs onto a second page, and never split a
+     line across the break. */
+  .pr-table thead {
+    display: table-header-group;
+  }
+
+  .pr-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pr-right {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pr-n {
+    width: 7mm;
+  }
+
+  .pr-hsn {
+    width: 16mm;
+    font-size: 8pt;
+  }
+
+  .pr-batch {
+    width: 22mm;
+    font-size: 8pt;
+    line-height: 1.25;
+  }
+
+  .pr-rate {
+    font-size: 7.5pt;
+    color: #444;
+  }
+
+  /* the bottom half */
+  .pr-bottom {
+    display: flex;
+    gap: 8mm;
+    margin-top: 4mm;
+    break-inside: avoid;
+  }
+
+  .pr-left {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pr-tax {
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    margin-bottom: 3mm;
+  }
+
+  .pr-tax th,
+  .pr-tax td {
+    border: 0.3pt solid #666;
+    padding: 1.2mm 2.5mm;
+    white-space: nowrap;
+  }
+
+  .pr-tax th {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.3pt;
+  }
+
+  .pr-words {
+    margin-bottom: 2.5mm;
+    font-size: 9pt;
+    max-width: 95mm;
+  }
+
+  .pr-totals {
+    width: 62mm;
+    flex: 0 0 auto;
+    font-size: 9.5pt;
+  }
+
+  .pr-trow {
+    display: flex;
+    justify-content: space-between;
+    gap: 4mm;
+    padding: 1mm 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pr-grand {
+    border-top: 0.8pt solid #000;
+    border-bottom: 1.6pt double #000;
+    margin-top: 1mm;
+    padding: 1.6mm 0;
+    font-size: 12pt;
+    font-weight: 700;
+  }
+
+  .pr-due {
+    font-weight: 700;
+  }
+
+  .pr-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 10mm;
+    margin-top: 8mm;
+    break-inside: avoid;
+  }
+
+  .pr-terms {
+    font-size: 8pt;
+    max-width: 100mm;
+  }
+
+  .pr-sign {
+    text-align: center;
+    font-size: 8.5pt;
+    flex: 0 0 auto;
+  }
+
+  .pr-sign-line {
+    width: 45mm;
+    border-bottom: 0.5pt solid #000;
+    height: 14mm;
+    margin-bottom: 1mm;
+  }
+
+  /* --------------------------------------------------------------------
+     80mm thermal roll
+     --------------------------------------------------------------------
+     Printed through the same browser dialog - the shopkeeper picks the
+     roll printer and the paper size. 72mm of printable width inside an
+     80mm roll is the usual figure.
+     -------------------------------------------------------------------- */
+  .pr-thermal {
+    width: 72mm;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 8.5pt;
+    line-height: 1.3;
+  }
+
+  .pr-t-head {
+    text-align: center;
+    font-size: 8pt;
+  }
+
+  .pr-t-head strong {
+    display: block;
+    font-size: 11pt;
+    margin-bottom: 0.6mm;
+  }
+
+  .pr-t-rule {
+    border-top: 0.4pt dashed #000;
+    margin: 1.6mm 0;
+  }
+
+  .pr-t-meta,
+  .pr-t-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 3mm;
+  }
+
+  .pr-t-meta-1 {
+    margin-top: 0.8mm;
+  }
+
+  .pr-t-total {
+    font-size: 11pt;
+    font-weight: 700;
+  }
+
+  .pr-t-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .pr-t-table td {
+    padding: 0.8mm 0;
+    vertical-align: top;
+  }
+
+  .pr-t-sub {
+    font-size: 7.5pt;
+  }
+
+  .pr-t-foot {
+    text-align: center;
+    font-size: 8pt;
+    margin-top: 1.6mm;
+  }
+}

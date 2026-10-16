@@ -1,0 +1,86 @@
+# ===========================================================================
+# BUILDING THE DESKTOP APP FOR WINDOWS, MAC AND LINUX
+# ---------------------------------------------------------------------------
+# A Windows installer can only be built on Windows and a Mac one only on a
+# Mac, so a developer with one machine cannot produce both. GitHub rents all
+# three by the minute, which is the cheapest Mac anybody will ever use.
+#
+# Run it from the Actions tab ("Run workflow"), or push a tag like v1.0.1.
+# The installers come out as downloadable artifacts on the run.
+#
+# Nothing here is signed. An unsigned app still installs, but Windows shows a
+# "unrecognised app" warning and macOS refuses to open it until the user
+# right-clicks and chooses Open. Signing needs a paid certificate from
+# Microsoft or Apple, and the secrets to use it; until then, tell people about
+# the warning rather than letting them meet it unprepared.
+# ===========================================================================
+
+name: Desktop app
+
+on:
+  workflow_dispatch:
+    inputs:
+      api_url:
+        description: "Server the built app should talk to (blank = ask on first run)"
+        required: false
+        default: ""
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            label: windows
+          # macos-14 and later are Apple silicon. An Intel Mac needs macos-13
+          # as well; add it here if anybody is still on one.
+          - os: macos-latest
+            label: mac
+          - os: ubuntu-22.04
+            label: linux
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.label }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Linux build dependencies
+        if: matrix.label == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libjavascriptcoregtk-4.1-dev \
+            libsoup-3.0-dev libgtk-3-dev librsvg2-dev patchelf
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      # Expo and React 19 disagree about a version number. It is noise.
+      - run: npm ci --legacy-peer-deps
+
+      - name: Build the installer
+        env:
+          EXPO_PUBLIC_API_URL: ${{ github.event.inputs.api_url }}
+        run: npm run desktop:build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: galla-${{ matrix.label }}
+          if-no-files-found: error
+          path: |
+            src-tauri/target/release/bundle/msi/*.msi
+            src-tauri/target/release/bundle/nsis/*.exe
+            src-tauri/target/release/bundle/dmg/*.dmg
+            src-tauri/target/release/bundle/deb/*.deb
+            src-tauri/target/release/bundle/appimage/*.AppImage
